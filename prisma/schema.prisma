@@ -1,13 +1,214 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+  engineType    = "library"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+// --- 1. User & Auth (Optimized for Better Auth) ---
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  emailVerified Boolean   @default(false)
+  image         String?
+  role          Role      @default(CLIENT)
+  phone         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions      Session[]
+  accounts      Account[]
+  bookings      Booking[]
+
+  @@map("users")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId]) // Performance boost for searching user sessions
+  @@map("sessions")
+}
+
+model Account {
+  id           String   @id @default(cuid())
+  userId       String
+  providerId   String
+  accountId    String
+  password     String?
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("accounts")
+}
+
+// --- 2. Culinary Collection (Menu) ---
+model MenuCategory {
+  id          String     @id @default(cuid())
+  name        String     @unique
+  slug        String     @unique
+  description String?    @db.Text
+  order       Int        @default(0)
+  items       MenuItem[]
+
+  @@map("menu_categories")
+}
+
+model MenuItem {
+  id            String       @id @default(cuid())
+  categoryId    String
+  name          String
+  slug          String       @unique
+  description   String       @db.Text
+  flavorProfile String?      
+  price         Decimal?     @db.Decimal(10, 2)
+  imageUrl      String?      
+  publicId      String?      
+  dietaryTags   String[]     
+  isSignature   Boolean      @default(false) 
+  isAvailable   Boolean      @default(true)
+  isFeatured    Boolean      @default(false)
+  order         Int          @default(0)
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  category      MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  images        MenuImage[]
+
+  @@index([categoryId])
+  @@index([slug])
+  @@map("menu_items")
+}
+
+model MenuImage {
+  id         String   @id @default(cuid())
+  url        String   
+  publicId   String?  
+  menuItemId String
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+
+  @@index([menuItemId])
+  @@map("menu_images")
+}
+
+// --- 3. Services & Premium Packages ---
+model Service {
+  id           String    @id @default(cuid())
+  name         String    @unique
+  slug         String    @unique
+  tagline      String?   
+  description  String    @db.Text
+  imageUrl     String?
+  order        Int       @default(0)
+  packages     Package[]
+  bookings     Booking[]
+
+  @@map("services")
+}
+
+model Package {
+  id          String   @id @default(cuid())
+  serviceId   String
+  name        String   
+  description String   @db.Text
+  price       Decimal? @db.Decimal(10, 2)
+  features    String[] 
+  isPopular   Boolean  @default(false)
+  service     Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@index([serviceId])
+  @@map("packages")
+}
+
+// --- 4. Luxury Booking & Inquiries ---
+model Booking {
+  id           String        @id @default(cuid())
+  userId       String?
+  serviceId    String
+  clientName   String
+  clientEmail  String
+  clientPhone  String
+  eventDate    DateTime
+  guestCount   Int
+  venueAddress String?
+  budgetRange  BudgetRange
+  specialNotes String?       @db.Text
+  status       BookingStatus @default(PENDING)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Strong Relations:
+  user         User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  service      Service       @relation(fields: [serviceId], references: [id], onDelete: Restrict)
+
+  @@index([userId])
+  @@index([serviceId])
+  @@map("bookings")
+}
+
+// --- 5. Content & Social Proof ---
+model Event {
+  id          String   @id @default(cuid())
+  title       String   
+  slug        String   @unique
+  description String   @db.Text
+  imageUrl    String?
+  eventDate   DateTime
+  location    String
+  isPublished Boolean  @default(false)
+
+  @@map("events")
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  clientName  String
+  clientTitle String?  
+  message     String   @db.Text
+  rating      Int      @default(5)
+  isFeatured  Boolean  @default(false)
+
+  @@map("testimonials")
+}
+
+model Gallery {
+  id          String          @id @default(cuid())
+  imageUrl    String
+  category    GalleryCategory @default(FOOD)
+  order       Int             @default(0)
+
+  @@map("gallery")
+}
+
+// --- 6. Enums ---
+enum Role {
+  ADMIN
+  CLIENT
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum BudgetRange {
+  RANGE_1000_3000
+  RANGE_3000_5000
+  RANGE_5000_10000
+  ABOVE_10000
+}
+
+enum GalleryCategory {
+  FOOD
+  EVENTS
+  SETUP
 }
