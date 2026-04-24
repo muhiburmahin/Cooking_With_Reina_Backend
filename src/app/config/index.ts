@@ -26,6 +26,8 @@ export default {
   },
 
   // Email Config
-  resend_api_key: process.env.RESEND_API_KEY,
-  from_email: process.env.FROM_EMAIL,
+  email: {
+    from_email: process.env.FROM_EMAIL,
+    email_pass: process.env.EMAIL_PASS,
+  },
 };

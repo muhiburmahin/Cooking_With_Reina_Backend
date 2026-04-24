@@ -5,11 +5,11 @@ const router = Router();
 const moduleRoutes = [
   {
     path: '/menu',
-    route: () => {}, // পরে আপনার MenuRoutes এখানে আসবে
+    route: () => {}, 
   },
   {
     path: '/booking',
-    route: () => {}, // পরে আপনার BookingRoutes এখানে আসবে
+    route: () => {},
   },
 ];
 
