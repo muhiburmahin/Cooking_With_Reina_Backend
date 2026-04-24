@@ -1,14 +1,14 @@
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma"
-  engineType    = "library"
+  engineType = "library"
 }
 
 datasource db {
   provider = "postgresql"
 }
 
-// --- 1. User & Auth (Optimized for Better Auth) ---
+// --- 1. User & Auth (Better Auth Compatible) ---
 model User {
   id            String    @id @default(cuid())
   name          String
@@ -23,6 +23,7 @@ model User {
   sessions      Session[]
   accounts      Account[]
   bookings      Booking[]
+  reviews       Review[] 
 
   @@map("users")
 }
@@ -34,7 +35,7 @@ model Session {
   expiresAt DateTime
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@index([userId]) // Performance boost for searching user sessions
+  @@index([userId])
   @@map("sessions")
 }
 
@@ -50,12 +51,13 @@ model Account {
   @@map("accounts")
 }
 
-// --- 2. Culinary Collection (Menu) ---
+// --- 2. Menu Management (Culinary Collection) ---
 model MenuCategory {
   id          String     @id @default(cuid())
   name        String     @unique
   slug        String     @unique
   description String?    @db.Text
+  imageUrl    String?    
   order       Int        @default(0)
   items       MenuItem[]
 
@@ -63,42 +65,57 @@ model MenuCategory {
 }
 
 model MenuItem {
-  id            String       @id @default(cuid())
-  categoryId    String
-  name          String
-  slug          String       @unique
-  description   String       @db.Text
-  flavorProfile String?      
-  price         Decimal?     @db.Decimal(10, 2)
-  imageUrl      String?      
-  publicId      String?      
-  dietaryTags   String[]     
-  isSignature   Boolean      @default(false) 
-  isAvailable   Boolean      @default(true)
-  isFeatured    Boolean      @default(false)
-  order         Int          @default(0)
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  category      MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
-  images        MenuImage[]
+  id              String       @id @default(cuid())
+  categoryId      String
+  name            String
+  slug            String       @unique
+  description     String       @db.Text
+  
+  // Cooking Details (New & Essential)
+  preparationTime String?     
+  cookingTime     String?     
+  servingSize     String?    
+  ingredients     String[]     
+  calories        Int?         
+  
+  flavorProfile   String?      
+  price           Decimal?     @db.Decimal(10, 2)    
+  thumbnailUrl    String?      
+  publicId        String?     
+  
+  dietaryTags     String[]     // ["Halal", "Vegan", "Spicy"]
+  isSignature     Boolean      @default(false) 
+  isAvailable     Boolean      @default(true)
+  isFeatured      Boolean      @default(false)
+  
+  averageRating   Float?       @default(0.0)
+  order           Int          @default(0)
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+
+  // Relations
+  category        MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  media           MenuMedia[] 
+  reviews         Review[]
 
   @@index([categoryId])
   @@index([slug])
   @@map("menu_items")
 }
 
-model MenuImage {
-  id         String   @id @default(cuid())
-  url        String   
-  publicId   String?  
+model MenuMedia {
+  id         String    @id @default(cuid())
+  url        String    
+  publicId   String? 
+  mediaType  MediaType @default(IMAGE) 
   menuItemId String
-  menuItem   MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+  menuItem   MenuItem  @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
 
   @@index([menuItemId])
-  @@map("menu_images")
+  @@map("menu_media")
 }
 
-// --- 3. Services & Premium Packages ---
+// --- 3. Services & Event Packages ---
 model Service {
   id           String    @id @default(cuid())
   name         String    @unique
@@ -127,7 +144,7 @@ model Package {
   @@map("packages")
 }
 
-// --- 4. Luxury Booking & Inquiries ---
+// --- 4. Booking, Reviews & Feedback ---
 model Booking {
   id           String        @id @default(cuid())
   userId       String?
@@ -144,13 +161,28 @@ model Booking {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt
 
-  // Strong Relations:
   user         User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
   service      Service       @relation(fields: [serviceId], references: [id], onDelete: Restrict)
 
   @@index([userId])
   @@index([serviceId])
   @@map("bookings")
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  userId     String
+  menuItemId String
+  rating     Int      @default(5)
+  comment    String?  @db.Text
+  isApproved Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id], onDelete: Cascade)
+
+  @@index([menuItemId])
+  @@map("reviews")
 }
 
 // --- 5. Content & Social Proof ---
@@ -179,10 +211,12 @@ model Testimonial {
 }
 
 model Gallery {
-  id          String          @id @default(cuid())
-  imageUrl    String
-  category    GalleryCategory @default(FOOD)
-  order       Int             @default(0)
+  id        String          @id @default(cuid())
+  url       String
+  publicId  String?
+  mediaType MediaType       @default(IMAGE) 
+  category  GalleryCategory @default(FOOD)
+  order     Int             @default(0)
 
   @@map("gallery")
 }
@@ -191,6 +225,11 @@ model Gallery {
 enum Role {
   ADMIN
   CLIENT
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
 }
 
 enum BookingStatus {

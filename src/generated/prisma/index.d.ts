@@ -39,10 +39,10 @@ export type MenuCategory = $Result.DefaultSelection<Prisma.$MenuCategoryPayload>
  */
 export type MenuItem = $Result.DefaultSelection<Prisma.$MenuItemPayload>
 /**
- * Model MenuImage
+ * Model MenuMedia
  * 
  */
-export type MenuImage = $Result.DefaultSelection<Prisma.$MenuImagePayload>
+export type MenuMedia = $Result.DefaultSelection<Prisma.$MenuMediaPayload>
 /**
  * Model Service
  * 
@@ -58,6 +58,11 @@ export type Package = $Result.DefaultSelection<Prisma.$PackagePayload>
  * 
  */
 export type Booking = $Result.DefaultSelection<Prisma.$BookingPayload>
+/**
+ * Model Review
+ * 
+ */
+export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
 /**
  * Model Event
  * 
@@ -84,6 +89,14 @@ export namespace $Enums {
 };
 
 export type Role = (typeof Role)[keyof typeof Role]
+
+
+export const MediaType: {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO'
+};
+
+export type MediaType = (typeof MediaType)[keyof typeof MediaType]
 
 
 export const BookingStatus: {
@@ -119,6 +132,10 @@ export type GalleryCategory = (typeof GalleryCategory)[keyof typeof GalleryCateg
 export type Role = $Enums.Role
 
 export const Role: typeof $Enums.Role
+
+export type MediaType = $Enums.MediaType
+
+export const MediaType: typeof $Enums.MediaType
 
 export type BookingStatus = $Enums.BookingStatus
 
@@ -304,14 +321,14 @@ export class PrismaClient<
   get menuItem(): Prisma.MenuItemDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.menuImage`: Exposes CRUD operations for the **MenuImage** model.
+   * `prisma.menuMedia`: Exposes CRUD operations for the **MenuMedia** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more MenuImages
-    * const menuImages = await prisma.menuImage.findMany()
+    * // Fetch zero or more MenuMedias
+    * const menuMedias = await prisma.menuMedia.findMany()
     * ```
     */
-  get menuImage(): Prisma.MenuImageDelegate<ExtArgs, ClientOptions>;
+  get menuMedia(): Prisma.MenuMediaDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.service`: Exposes CRUD operations for the **Service** model.
@@ -342,6 +359,16 @@ export class PrismaClient<
     * ```
     */
   get booking(): Prisma.BookingDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.review`: Exposes CRUD operations for the **Review** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Reviews
+    * const reviews = await prisma.review.findMany()
+    * ```
+    */
+  get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.event`: Exposes CRUD operations for the **Event** model.
@@ -811,10 +838,11 @@ export namespace Prisma {
     Account: 'Account',
     MenuCategory: 'MenuCategory',
     MenuItem: 'MenuItem',
-    MenuImage: 'MenuImage',
+    MenuMedia: 'MenuMedia',
     Service: 'Service',
     Package: 'Package',
     Booking: 'Booking',
+    Review: 'Review',
     Event: 'Event',
     Testimonial: 'Testimonial',
     Gallery: 'Gallery'
@@ -833,7 +861,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "session" | "account" | "menuCategory" | "menuItem" | "menuImage" | "service" | "package" | "booking" | "event" | "testimonial" | "gallery"
+      modelProps: "user" | "session" | "account" | "menuCategory" | "menuItem" | "menuMedia" | "service" | "package" | "booking" | "review" | "event" | "testimonial" | "gallery"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1207,77 +1235,77 @@ export namespace Prisma {
           }
         }
       }
-      MenuImage: {
-        payload: Prisma.$MenuImagePayload<ExtArgs>
-        fields: Prisma.MenuImageFieldRefs
+      MenuMedia: {
+        payload: Prisma.$MenuMediaPayload<ExtArgs>
+        fields: Prisma.MenuMediaFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.MenuImageFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload> | null
+            args: Prisma.MenuMediaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.MenuImageFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>
+            args: Prisma.MenuMediaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>
           }
           findFirst: {
-            args: Prisma.MenuImageFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload> | null
+            args: Prisma.MenuMediaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.MenuImageFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>
+            args: Prisma.MenuMediaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>
           }
           findMany: {
-            args: Prisma.MenuImageFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>[]
+            args: Prisma.MenuMediaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>[]
           }
           create: {
-            args: Prisma.MenuImageCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>
+            args: Prisma.MenuMediaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>
           }
           createMany: {
-            args: Prisma.MenuImageCreateManyArgs<ExtArgs>
+            args: Prisma.MenuMediaCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.MenuImageCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>[]
+            args: Prisma.MenuMediaCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>[]
           }
           delete: {
-            args: Prisma.MenuImageDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>
+            args: Prisma.MenuMediaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>
           }
           update: {
-            args: Prisma.MenuImageUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>
+            args: Prisma.MenuMediaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>
           }
           deleteMany: {
-            args: Prisma.MenuImageDeleteManyArgs<ExtArgs>
+            args: Prisma.MenuMediaDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.MenuImageUpdateManyArgs<ExtArgs>
+            args: Prisma.MenuMediaUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.MenuImageUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>[]
+            args: Prisma.MenuMediaUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>[]
           }
           upsert: {
-            args: Prisma.MenuImageUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$MenuImagePayload>
+            args: Prisma.MenuMediaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MenuMediaPayload>
           }
           aggregate: {
-            args: Prisma.MenuImageAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateMenuImage>
+            args: Prisma.MenuMediaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMenuMedia>
           }
           groupBy: {
-            args: Prisma.MenuImageGroupByArgs<ExtArgs>
-            result: $Utils.Optional<MenuImageGroupByOutputType>[]
+            args: Prisma.MenuMediaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MenuMediaGroupByOutputType>[]
           }
           count: {
-            args: Prisma.MenuImageCountArgs<ExtArgs>
-            result: $Utils.Optional<MenuImageCountAggregateOutputType> | number
+            args: Prisma.MenuMediaCountArgs<ExtArgs>
+            result: $Utils.Optional<MenuMediaCountAggregateOutputType> | number
           }
         }
       }
@@ -1500,6 +1528,80 @@ export namespace Prisma {
           count: {
             args: Prisma.BookingCountArgs<ExtArgs>
             result: $Utils.Optional<BookingCountAggregateOutputType> | number
+          }
+        }
+      }
+      Review: {
+        payload: Prisma.$ReviewPayload<ExtArgs>
+        fields: Prisma.ReviewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ReviewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ReviewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findFirst: {
+            args: Prisma.ReviewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ReviewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          findMany: {
+            args: Prisma.ReviewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          create: {
+            args: Prisma.ReviewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          createMany: {
+            args: Prisma.ReviewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ReviewCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          delete: {
+            args: Prisma.ReviewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          update: {
+            args: Prisma.ReviewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          deleteMany: {
+            args: Prisma.ReviewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ReviewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReviewUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>[]
+          }
+          upsert: {
+            args: Prisma.ReviewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReviewPayload>
+          }
+          aggregate: {
+            args: Prisma.ReviewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateReview>
+          }
+          groupBy: {
+            args: Prisma.ReviewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ReviewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ReviewCountArgs<ExtArgs>
+            result: $Utils.Optional<ReviewCountAggregateOutputType> | number
           }
         }
       }
@@ -1838,10 +1940,11 @@ export namespace Prisma {
     account?: AccountOmit
     menuCategory?: MenuCategoryOmit
     menuItem?: MenuItemOmit
-    menuImage?: MenuImageOmit
+    menuMedia?: MenuMediaOmit
     service?: ServiceOmit
     package?: PackageOmit
     booking?: BookingOmit
+    review?: ReviewOmit
     event?: EventOmit
     testimonial?: TestimonialOmit
     gallery?: GalleryOmit
@@ -1928,12 +2031,14 @@ export namespace Prisma {
     sessions: number
     accounts: number
     bookings: number
+    reviews: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
     bookings?: boolean | UserCountOutputTypeCountBookingsArgs
+    reviews?: boolean | UserCountOutputTypeCountReviewsArgs
   }
 
   // Custom InputTypes
@@ -1966,6 +2071,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BookingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
   }
 
 
@@ -2005,11 +2117,13 @@ export namespace Prisma {
    */
 
   export type MenuItemCountOutputType = {
-    images: number
+    media: number
+    reviews: number
   }
 
   export type MenuItemCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    images?: boolean | MenuItemCountOutputTypeCountImagesArgs
+    media?: boolean | MenuItemCountOutputTypeCountMediaArgs
+    reviews?: boolean | MenuItemCountOutputTypeCountReviewsArgs
   }
 
   // Custom InputTypes
@@ -2026,8 +2140,15 @@ export namespace Prisma {
   /**
    * MenuItemCountOutputType without action
    */
-  export type MenuItemCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MenuImageWhereInput
+  export type MenuItemCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MenuMediaWhereInput
+  }
+
+  /**
+   * MenuItemCountOutputType without action
+   */
+  export type MenuItemCountOutputTypeCountReviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
   }
 
 
@@ -2274,6 +2395,7 @@ export namespace Prisma {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     bookings?: boolean | User$bookingsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2318,6 +2440,7 @@ export namespace Prisma {
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     accounts?: boolean | User$accountsArgs<ExtArgs>
     bookings?: boolean | User$bookingsArgs<ExtArgs>
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2329,6 +2452,7 @@ export namespace Prisma {
       sessions: Prisma.$SessionPayload<ExtArgs>[]
       accounts: Prisma.$AccountPayload<ExtArgs>[]
       bookings: Prisma.$BookingPayload<ExtArgs>[]
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2737,6 +2861,7 @@ export namespace Prisma {
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     bookings<T extends User$bookingsArgs<ExtArgs> = {}>(args?: Subset<T, User$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3237,6 +3362,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BookingScalarFieldEnum | BookingScalarFieldEnum[]
+  }
+
+  /**
+   * User.reviews
+   */
+  export type User$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
@@ -5396,6 +5545,7 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
+    imageUrl: string | null
     order: number | null
   }
 
@@ -5404,6 +5554,7 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
+    imageUrl: string | null
     order: number | null
   }
 
@@ -5412,6 +5563,7 @@ export namespace Prisma {
     name: number
     slug: number
     description: number
+    imageUrl: number
     order: number
     _all: number
   }
@@ -5430,6 +5582,7 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    imageUrl?: true
     order?: true
   }
 
@@ -5438,6 +5591,7 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    imageUrl?: true
     order?: true
   }
 
@@ -5446,6 +5600,7 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    imageUrl?: true
     order?: true
     _all?: true
   }
@@ -5541,6 +5696,7 @@ export namespace Prisma {
     name: string
     slug: string
     description: string | null
+    imageUrl: string | null
     order: number
     _count: MenuCategoryCountAggregateOutputType | null
     _avg: MenuCategoryAvgAggregateOutputType | null
@@ -5568,6 +5724,7 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    imageUrl?: boolean
     order?: boolean
     items?: boolean | MenuCategory$itemsArgs<ExtArgs>
     _count?: boolean | MenuCategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -5578,6 +5735,7 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    imageUrl?: boolean
     order?: boolean
   }, ExtArgs["result"]["menuCategory"]>
 
@@ -5586,6 +5744,7 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    imageUrl?: boolean
     order?: boolean
   }, ExtArgs["result"]["menuCategory"]>
 
@@ -5594,10 +5753,11 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    imageUrl?: boolean
     order?: boolean
   }
 
-  export type MenuCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "order", ExtArgs["result"]["menuCategory"]>
+  export type MenuCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "slug" | "description" | "imageUrl" | "order", ExtArgs["result"]["menuCategory"]>
   export type MenuCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     items?: boolean | MenuCategory$itemsArgs<ExtArgs>
     _count?: boolean | MenuCategoryCountOutputTypeDefaultArgs<ExtArgs>
@@ -5615,6 +5775,7 @@ export namespace Prisma {
       name: string
       slug: string
       description: string | null
+      imageUrl: string | null
       order: number
     }, ExtArgs["result"]["menuCategory"]>
     composites: {}
@@ -6044,6 +6205,7 @@ export namespace Prisma {
     readonly name: FieldRef<"MenuCategory", 'String'>
     readonly slug: FieldRef<"MenuCategory", 'String'>
     readonly description: FieldRef<"MenuCategory", 'String'>
+    readonly imageUrl: FieldRef<"MenuCategory", 'String'>
     readonly order: FieldRef<"MenuCategory", 'Int'>
   }
     
@@ -6493,12 +6655,16 @@ export namespace Prisma {
   }
 
   export type MenuItemAvgAggregateOutputType = {
+    calories: number | null
     price: Decimal | null
+    averageRating: number | null
     order: number | null
   }
 
   export type MenuItemSumAggregateOutputType = {
+    calories: number | null
     price: Decimal | null
+    averageRating: number | null
     order: number | null
   }
 
@@ -6508,13 +6674,18 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
+    preparationTime: string | null
+    cookingTime: string | null
+    servingSize: string | null
+    calories: number | null
     flavorProfile: string | null
     price: Decimal | null
-    imageUrl: string | null
+    thumbnailUrl: string | null
     publicId: string | null
     isSignature: boolean | null
     isAvailable: boolean | null
     isFeatured: boolean | null
+    averageRating: number | null
     order: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6526,13 +6697,18 @@ export namespace Prisma {
     name: string | null
     slug: string | null
     description: string | null
+    preparationTime: string | null
+    cookingTime: string | null
+    servingSize: string | null
+    calories: number | null
     flavorProfile: string | null
     price: Decimal | null
-    imageUrl: string | null
+    thumbnailUrl: string | null
     publicId: string | null
     isSignature: boolean | null
     isAvailable: boolean | null
     isFeatured: boolean | null
+    averageRating: number | null
     order: number | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -6544,14 +6720,20 @@ export namespace Prisma {
     name: number
     slug: number
     description: number
+    preparationTime: number
+    cookingTime: number
+    servingSize: number
+    ingredients: number
+    calories: number
     flavorProfile: number
     price: number
-    imageUrl: number
+    thumbnailUrl: number
     publicId: number
     dietaryTags: number
     isSignature: number
     isAvailable: number
     isFeatured: number
+    averageRating: number
     order: number
     createdAt: number
     updatedAt: number
@@ -6560,12 +6742,16 @@ export namespace Prisma {
 
 
   export type MenuItemAvgAggregateInputType = {
+    calories?: true
     price?: true
+    averageRating?: true
     order?: true
   }
 
   export type MenuItemSumAggregateInputType = {
+    calories?: true
     price?: true
+    averageRating?: true
     order?: true
   }
 
@@ -6575,13 +6761,18 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    preparationTime?: true
+    cookingTime?: true
+    servingSize?: true
+    calories?: true
     flavorProfile?: true
     price?: true
-    imageUrl?: true
+    thumbnailUrl?: true
     publicId?: true
     isSignature?: true
     isAvailable?: true
     isFeatured?: true
+    averageRating?: true
     order?: true
     createdAt?: true
     updatedAt?: true
@@ -6593,13 +6784,18 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    preparationTime?: true
+    cookingTime?: true
+    servingSize?: true
+    calories?: true
     flavorProfile?: true
     price?: true
-    imageUrl?: true
+    thumbnailUrl?: true
     publicId?: true
     isSignature?: true
     isAvailable?: true
     isFeatured?: true
+    averageRating?: true
     order?: true
     createdAt?: true
     updatedAt?: true
@@ -6611,14 +6807,20 @@ export namespace Prisma {
     name?: true
     slug?: true
     description?: true
+    preparationTime?: true
+    cookingTime?: true
+    servingSize?: true
+    ingredients?: true
+    calories?: true
     flavorProfile?: true
     price?: true
-    imageUrl?: true
+    thumbnailUrl?: true
     publicId?: true
     dietaryTags?: true
     isSignature?: true
     isAvailable?: true
     isFeatured?: true
+    averageRating?: true
     order?: true
     createdAt?: true
     updatedAt?: true
@@ -6717,14 +6919,20 @@ export namespace Prisma {
     name: string
     slug: string
     description: string
+    preparationTime: string | null
+    cookingTime: string | null
+    servingSize: string | null
+    ingredients: string[]
+    calories: number | null
     flavorProfile: string | null
     price: Decimal | null
-    imageUrl: string | null
+    thumbnailUrl: string | null
     publicId: string | null
     dietaryTags: string[]
     isSignature: boolean
     isAvailable: boolean
     isFeatured: boolean
+    averageRating: number | null
     order: number
     createdAt: Date
     updatedAt: Date
@@ -6755,19 +6963,26 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    preparationTime?: boolean
+    cookingTime?: boolean
+    servingSize?: boolean
+    ingredients?: boolean
+    calories?: boolean
     flavorProfile?: boolean
     price?: boolean
-    imageUrl?: boolean
+    thumbnailUrl?: boolean
     publicId?: boolean
     dietaryTags?: boolean
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     category?: boolean | MenuCategoryDefaultArgs<ExtArgs>
-    images?: boolean | MenuItem$imagesArgs<ExtArgs>
+    media?: boolean | MenuItem$mediaArgs<ExtArgs>
+    reviews?: boolean | MenuItem$reviewsArgs<ExtArgs>
     _count?: boolean | MenuItemCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["menuItem"]>
 
@@ -6777,14 +6992,20 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    preparationTime?: boolean
+    cookingTime?: boolean
+    servingSize?: boolean
+    ingredients?: boolean
+    calories?: boolean
     flavorProfile?: boolean
     price?: boolean
-    imageUrl?: boolean
+    thumbnailUrl?: boolean
     publicId?: boolean
     dietaryTags?: boolean
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6797,14 +7018,20 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    preparationTime?: boolean
+    cookingTime?: boolean
+    servingSize?: boolean
+    ingredients?: boolean
+    calories?: boolean
     flavorProfile?: boolean
     price?: boolean
-    imageUrl?: boolean
+    thumbnailUrl?: boolean
     publicId?: boolean
     dietaryTags?: boolean
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6817,23 +7044,30 @@ export namespace Prisma {
     name?: boolean
     slug?: boolean
     description?: boolean
+    preparationTime?: boolean
+    cookingTime?: boolean
+    servingSize?: boolean
+    ingredients?: boolean
+    calories?: boolean
     flavorProfile?: boolean
     price?: boolean
-    imageUrl?: boolean
+    thumbnailUrl?: boolean
     publicId?: boolean
     dietaryTags?: boolean
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: boolean
     order?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MenuItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "name" | "slug" | "description" | "flavorProfile" | "price" | "imageUrl" | "publicId" | "dietaryTags" | "isSignature" | "isAvailable" | "isFeatured" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["menuItem"]>
+  export type MenuItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "categoryId" | "name" | "slug" | "description" | "preparationTime" | "cookingTime" | "servingSize" | "ingredients" | "calories" | "flavorProfile" | "price" | "thumbnailUrl" | "publicId" | "dietaryTags" | "isSignature" | "isAvailable" | "isFeatured" | "averageRating" | "order" | "createdAt" | "updatedAt", ExtArgs["result"]["menuItem"]>
   export type MenuItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | MenuCategoryDefaultArgs<ExtArgs>
-    images?: boolean | MenuItem$imagesArgs<ExtArgs>
+    media?: boolean | MenuItem$mediaArgs<ExtArgs>
+    reviews?: boolean | MenuItem$reviewsArgs<ExtArgs>
     _count?: boolean | MenuItemCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MenuItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6847,7 +7081,8 @@ export namespace Prisma {
     name: "MenuItem"
     objects: {
       category: Prisma.$MenuCategoryPayload<ExtArgs>
-      images: Prisma.$MenuImagePayload<ExtArgs>[]
+      media: Prisma.$MenuMediaPayload<ExtArgs>[]
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6855,14 +7090,20 @@ export namespace Prisma {
       name: string
       slug: string
       description: string
+      preparationTime: string | null
+      cookingTime: string | null
+      servingSize: string | null
+      ingredients: string[]
+      calories: number | null
       flavorProfile: string | null
       price: Prisma.Decimal | null
-      imageUrl: string | null
+      thumbnailUrl: string | null
       publicId: string | null
       dietaryTags: string[]
       isSignature: boolean
       isAvailable: boolean
       isFeatured: boolean
+      averageRating: number | null
       order: number
       createdAt: Date
       updatedAt: Date
@@ -7261,7 +7502,8 @@ export namespace Prisma {
   export interface Prisma__MenuItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     category<T extends MenuCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MenuCategoryDefaultArgs<ExtArgs>>): Prisma__MenuCategoryClient<$Result.GetResult<Prisma.$MenuCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    images<T extends MenuItem$imagesArgs<ExtArgs> = {}>(args?: Subset<T, MenuItem$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    media<T extends MenuItem$mediaArgs<ExtArgs> = {}>(args?: Subset<T, MenuItem$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    reviews<T extends MenuItem$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, MenuItem$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7296,14 +7538,20 @@ export namespace Prisma {
     readonly name: FieldRef<"MenuItem", 'String'>
     readonly slug: FieldRef<"MenuItem", 'String'>
     readonly description: FieldRef<"MenuItem", 'String'>
+    readonly preparationTime: FieldRef<"MenuItem", 'String'>
+    readonly cookingTime: FieldRef<"MenuItem", 'String'>
+    readonly servingSize: FieldRef<"MenuItem", 'String'>
+    readonly ingredients: FieldRef<"MenuItem", 'String[]'>
+    readonly calories: FieldRef<"MenuItem", 'Int'>
     readonly flavorProfile: FieldRef<"MenuItem", 'String'>
     readonly price: FieldRef<"MenuItem", 'Decimal'>
-    readonly imageUrl: FieldRef<"MenuItem", 'String'>
+    readonly thumbnailUrl: FieldRef<"MenuItem", 'String'>
     readonly publicId: FieldRef<"MenuItem", 'String'>
     readonly dietaryTags: FieldRef<"MenuItem", 'String[]'>
     readonly isSignature: FieldRef<"MenuItem", 'Boolean'>
     readonly isAvailable: FieldRef<"MenuItem", 'Boolean'>
     readonly isFeatured: FieldRef<"MenuItem", 'Boolean'>
+    readonly averageRating: FieldRef<"MenuItem", 'Float'>
     readonly order: FieldRef<"MenuItem", 'Int'>
     readonly createdAt: FieldRef<"MenuItem", 'DateTime'>
     readonly updatedAt: FieldRef<"MenuItem", 'DateTime'>
@@ -7708,27 +7956,51 @@ export namespace Prisma {
   }
 
   /**
-   * MenuItem.images
+   * MenuItem.media
    */
-  export type MenuItem$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuItem$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
-    where?: MenuImageWhereInput
-    orderBy?: MenuImageOrderByWithRelationInput | MenuImageOrderByWithRelationInput[]
-    cursor?: MenuImageWhereUniqueInput
+    include?: MenuMediaInclude<ExtArgs> | null
+    where?: MenuMediaWhereInput
+    orderBy?: MenuMediaOrderByWithRelationInput | MenuMediaOrderByWithRelationInput[]
+    cursor?: MenuMediaWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: MenuImageScalarFieldEnum | MenuImageScalarFieldEnum[]
+    distinct?: MenuMediaScalarFieldEnum | MenuMediaScalarFieldEnum[]
+  }
+
+  /**
+   * MenuItem.reviews
+   */
+  export type MenuItem$reviewsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    cursor?: ReviewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
   }
 
   /**
@@ -7751,200 +8023,211 @@ export namespace Prisma {
 
 
   /**
-   * Model MenuImage
+   * Model MenuMedia
    */
 
-  export type AggregateMenuImage = {
-    _count: MenuImageCountAggregateOutputType | null
-    _min: MenuImageMinAggregateOutputType | null
-    _max: MenuImageMaxAggregateOutputType | null
+  export type AggregateMenuMedia = {
+    _count: MenuMediaCountAggregateOutputType | null
+    _min: MenuMediaMinAggregateOutputType | null
+    _max: MenuMediaMaxAggregateOutputType | null
   }
 
-  export type MenuImageMinAggregateOutputType = {
+  export type MenuMediaMinAggregateOutputType = {
     id: string | null
     url: string | null
     publicId: string | null
+    mediaType: $Enums.MediaType | null
     menuItemId: string | null
   }
 
-  export type MenuImageMaxAggregateOutputType = {
+  export type MenuMediaMaxAggregateOutputType = {
     id: string | null
     url: string | null
     publicId: string | null
+    mediaType: $Enums.MediaType | null
     menuItemId: string | null
   }
 
-  export type MenuImageCountAggregateOutputType = {
+  export type MenuMediaCountAggregateOutputType = {
     id: number
     url: number
     publicId: number
+    mediaType: number
     menuItemId: number
     _all: number
   }
 
 
-  export type MenuImageMinAggregateInputType = {
+  export type MenuMediaMinAggregateInputType = {
     id?: true
     url?: true
     publicId?: true
+    mediaType?: true
     menuItemId?: true
   }
 
-  export type MenuImageMaxAggregateInputType = {
+  export type MenuMediaMaxAggregateInputType = {
     id?: true
     url?: true
     publicId?: true
+    mediaType?: true
     menuItemId?: true
   }
 
-  export type MenuImageCountAggregateInputType = {
+  export type MenuMediaCountAggregateInputType = {
     id?: true
     url?: true
     publicId?: true
+    mediaType?: true
     menuItemId?: true
     _all?: true
   }
 
-  export type MenuImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which MenuImage to aggregate.
+     * Filter which MenuMedia to aggregate.
      */
-    where?: MenuImageWhereInput
+    where?: MenuMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MenuImages to fetch.
+     * Determine the order of MenuMedias to fetch.
      */
-    orderBy?: MenuImageOrderByWithRelationInput | MenuImageOrderByWithRelationInput[]
+    orderBy?: MenuMediaOrderByWithRelationInput | MenuMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: MenuImageWhereUniqueInput
+    cursor?: MenuMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MenuImages from the position of the cursor.
+     * Take `±n` MenuMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MenuImages.
+     * Skip the first `n` MenuMedias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned MenuImages
+     * Count returned MenuMedias
     **/
-    _count?: true | MenuImageCountAggregateInputType
+    _count?: true | MenuMediaCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: MenuImageMinAggregateInputType
+    _min?: MenuMediaMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: MenuImageMaxAggregateInputType
+    _max?: MenuMediaMaxAggregateInputType
   }
 
-  export type GetMenuImageAggregateType<T extends MenuImageAggregateArgs> = {
-        [P in keyof T & keyof AggregateMenuImage]: P extends '_count' | 'count'
+  export type GetMenuMediaAggregateType<T extends MenuMediaAggregateArgs> = {
+        [P in keyof T & keyof AggregateMenuMedia]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateMenuImage[P]>
-      : GetScalarType<T[P], AggregateMenuImage[P]>
+        : GetScalarType<T[P], AggregateMenuMedia[P]>
+      : GetScalarType<T[P], AggregateMenuMedia[P]>
   }
 
 
 
 
-  export type MenuImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MenuImageWhereInput
-    orderBy?: MenuImageOrderByWithAggregationInput | MenuImageOrderByWithAggregationInput[]
-    by: MenuImageScalarFieldEnum[] | MenuImageScalarFieldEnum
-    having?: MenuImageScalarWhereWithAggregatesInput
+  export type MenuMediaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MenuMediaWhereInput
+    orderBy?: MenuMediaOrderByWithAggregationInput | MenuMediaOrderByWithAggregationInput[]
+    by: MenuMediaScalarFieldEnum[] | MenuMediaScalarFieldEnum
+    having?: MenuMediaScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: MenuImageCountAggregateInputType | true
-    _min?: MenuImageMinAggregateInputType
-    _max?: MenuImageMaxAggregateInputType
+    _count?: MenuMediaCountAggregateInputType | true
+    _min?: MenuMediaMinAggregateInputType
+    _max?: MenuMediaMaxAggregateInputType
   }
 
-  export type MenuImageGroupByOutputType = {
+  export type MenuMediaGroupByOutputType = {
     id: string
     url: string
     publicId: string | null
+    mediaType: $Enums.MediaType
     menuItemId: string
-    _count: MenuImageCountAggregateOutputType | null
-    _min: MenuImageMinAggregateOutputType | null
-    _max: MenuImageMaxAggregateOutputType | null
+    _count: MenuMediaCountAggregateOutputType | null
+    _min: MenuMediaMinAggregateOutputType | null
+    _max: MenuMediaMaxAggregateOutputType | null
   }
 
-  type GetMenuImageGroupByPayload<T extends MenuImageGroupByArgs> = Prisma.PrismaPromise<
+  type GetMenuMediaGroupByPayload<T extends MenuMediaGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<MenuImageGroupByOutputType, T['by']> &
+      PickEnumerable<MenuMediaGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof MenuImageGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof MenuMediaGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], MenuImageGroupByOutputType[P]>
-            : GetScalarType<T[P], MenuImageGroupByOutputType[P]>
+              : GetScalarType<T[P], MenuMediaGroupByOutputType[P]>
+            : GetScalarType<T[P], MenuMediaGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type MenuImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MenuMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     url?: boolean
     publicId?: boolean
+    mediaType?: boolean
     menuItemId?: boolean
     menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["menuImage"]>
+  }, ExtArgs["result"]["menuMedia"]>
 
-  export type MenuImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MenuMediaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     url?: boolean
     publicId?: boolean
+    mediaType?: boolean
     menuItemId?: boolean
     menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["menuImage"]>
+  }, ExtArgs["result"]["menuMedia"]>
 
-  export type MenuImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MenuMediaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     url?: boolean
     publicId?: boolean
+    mediaType?: boolean
     menuItemId?: boolean
     menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["menuImage"]>
+  }, ExtArgs["result"]["menuMedia"]>
 
-  export type MenuImageSelectScalar = {
+  export type MenuMediaSelectScalar = {
     id?: boolean
     url?: boolean
     publicId?: boolean
+    mediaType?: boolean
     menuItemId?: boolean
   }
 
-  export type MenuImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "publicId" | "menuItemId", ExtArgs["result"]["menuImage"]>
-  export type MenuImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "publicId" | "mediaType" | "menuItemId", ExtArgs["result"]["menuMedia"]>
+  export type MenuMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
   }
-  export type MenuImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
   }
-  export type MenuImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
   }
 
-  export type $MenuImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "MenuImage"
+  export type $MenuMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MenuMedia"
     objects: {
       menuItem: Prisma.$MenuItemPayload<ExtArgs>
     }
@@ -7952,137 +8235,138 @@ export namespace Prisma {
       id: string
       url: string
       publicId: string | null
+      mediaType: $Enums.MediaType
       menuItemId: string
-    }, ExtArgs["result"]["menuImage"]>
+    }, ExtArgs["result"]["menuMedia"]>
     composites: {}
   }
 
-  type MenuImageGetPayload<S extends boolean | null | undefined | MenuImageDefaultArgs> = $Result.GetResult<Prisma.$MenuImagePayload, S>
+  type MenuMediaGetPayload<S extends boolean | null | undefined | MenuMediaDefaultArgs> = $Result.GetResult<Prisma.$MenuMediaPayload, S>
 
-  type MenuImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<MenuImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: MenuImageCountAggregateInputType | true
+  type MenuMediaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MenuMediaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MenuMediaCountAggregateInputType | true
     }
 
-  export interface MenuImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MenuImage'], meta: { name: 'MenuImage' } }
+  export interface MenuMediaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MenuMedia'], meta: { name: 'MenuMedia' } }
     /**
-     * Find zero or one MenuImage that matches the filter.
-     * @param {MenuImageFindUniqueArgs} args - Arguments to find a MenuImage
+     * Find zero or one MenuMedia that matches the filter.
+     * @param {MenuMediaFindUniqueArgs} args - Arguments to find a MenuMedia
      * @example
-     * // Get one MenuImage
-     * const menuImage = await prisma.menuImage.findUnique({
+     * // Get one MenuMedia
+     * const menuMedia = await prisma.menuMedia.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends MenuImageFindUniqueArgs>(args: SelectSubset<T, MenuImageFindUniqueArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends MenuMediaFindUniqueArgs>(args: SelectSubset<T, MenuMediaFindUniqueArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one MenuImage that matches the filter or throw an error with `error.code='P2025'`
+     * Find one MenuMedia that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {MenuImageFindUniqueOrThrowArgs} args - Arguments to find a MenuImage
+     * @param {MenuMediaFindUniqueOrThrowArgs} args - Arguments to find a MenuMedia
      * @example
-     * // Get one MenuImage
-     * const menuImage = await prisma.menuImage.findUniqueOrThrow({
+     * // Get one MenuMedia
+     * const menuMedia = await prisma.menuMedia.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends MenuImageFindUniqueOrThrowArgs>(args: SelectSubset<T, MenuImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends MenuMediaFindUniqueOrThrowArgs>(args: SelectSubset<T, MenuMediaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first MenuImage that matches the filter.
+     * Find the first MenuMedia that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MenuImageFindFirstArgs} args - Arguments to find a MenuImage
+     * @param {MenuMediaFindFirstArgs} args - Arguments to find a MenuMedia
      * @example
-     * // Get one MenuImage
-     * const menuImage = await prisma.menuImage.findFirst({
+     * // Get one MenuMedia
+     * const menuMedia = await prisma.menuMedia.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends MenuImageFindFirstArgs>(args?: SelectSubset<T, MenuImageFindFirstArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends MenuMediaFindFirstArgs>(args?: SelectSubset<T, MenuMediaFindFirstArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first MenuImage that matches the filter or
+     * Find the first MenuMedia that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MenuImageFindFirstOrThrowArgs} args - Arguments to find a MenuImage
+     * @param {MenuMediaFindFirstOrThrowArgs} args - Arguments to find a MenuMedia
      * @example
-     * // Get one MenuImage
-     * const menuImage = await prisma.menuImage.findFirstOrThrow({
+     * // Get one MenuMedia
+     * const menuMedia = await prisma.menuMedia.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends MenuImageFindFirstOrThrowArgs>(args?: SelectSubset<T, MenuImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends MenuMediaFindFirstOrThrowArgs>(args?: SelectSubset<T, MenuMediaFindFirstOrThrowArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more MenuImages that matches the filter.
+     * Find zero or more MenuMedias that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MenuImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {MenuMediaFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all MenuImages
-     * const menuImages = await prisma.menuImage.findMany()
+     * // Get all MenuMedias
+     * const menuMedias = await prisma.menuMedia.findMany()
      * 
-     * // Get first 10 MenuImages
-     * const menuImages = await prisma.menuImage.findMany({ take: 10 })
+     * // Get first 10 MenuMedias
+     * const menuMedias = await prisma.menuMedia.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const menuImageWithIdOnly = await prisma.menuImage.findMany({ select: { id: true } })
+     * const menuMediaWithIdOnly = await prisma.menuMedia.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends MenuImageFindManyArgs>(args?: SelectSubset<T, MenuImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends MenuMediaFindManyArgs>(args?: SelectSubset<T, MenuMediaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a MenuImage.
-     * @param {MenuImageCreateArgs} args - Arguments to create a MenuImage.
+     * Create a MenuMedia.
+     * @param {MenuMediaCreateArgs} args - Arguments to create a MenuMedia.
      * @example
-     * // Create one MenuImage
-     * const MenuImage = await prisma.menuImage.create({
+     * // Create one MenuMedia
+     * const MenuMedia = await prisma.menuMedia.create({
      *   data: {
-     *     // ... data to create a MenuImage
+     *     // ... data to create a MenuMedia
      *   }
      * })
      * 
      */
-    create<T extends MenuImageCreateArgs>(args: SelectSubset<T, MenuImageCreateArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends MenuMediaCreateArgs>(args: SelectSubset<T, MenuMediaCreateArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many MenuImages.
-     * @param {MenuImageCreateManyArgs} args - Arguments to create many MenuImages.
+     * Create many MenuMedias.
+     * @param {MenuMediaCreateManyArgs} args - Arguments to create many MenuMedias.
      * @example
-     * // Create many MenuImages
-     * const menuImage = await prisma.menuImage.createMany({
+     * // Create many MenuMedias
+     * const menuMedia = await prisma.menuMedia.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends MenuImageCreateManyArgs>(args?: SelectSubset<T, MenuImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends MenuMediaCreateManyArgs>(args?: SelectSubset<T, MenuMediaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many MenuImages and returns the data saved in the database.
-     * @param {MenuImageCreateManyAndReturnArgs} args - Arguments to create many MenuImages.
+     * Create many MenuMedias and returns the data saved in the database.
+     * @param {MenuMediaCreateManyAndReturnArgs} args - Arguments to create many MenuMedias.
      * @example
-     * // Create many MenuImages
-     * const menuImage = await prisma.menuImage.createManyAndReturn({
+     * // Create many MenuMedias
+     * const menuMedia = await prisma.menuMedia.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many MenuImages and only return the `id`
-     * const menuImageWithIdOnly = await prisma.menuImage.createManyAndReturn({
+     * // Create many MenuMedias and only return the `id`
+     * const menuMediaWithIdOnly = await prisma.menuMedia.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -8092,28 +8376,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends MenuImageCreateManyAndReturnArgs>(args?: SelectSubset<T, MenuImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends MenuMediaCreateManyAndReturnArgs>(args?: SelectSubset<T, MenuMediaCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a MenuImage.
-     * @param {MenuImageDeleteArgs} args - Arguments to delete one MenuImage.
+     * Delete a MenuMedia.
+     * @param {MenuMediaDeleteArgs} args - Arguments to delete one MenuMedia.
      * @example
-     * // Delete one MenuImage
-     * const MenuImage = await prisma.menuImage.delete({
+     * // Delete one MenuMedia
+     * const MenuMedia = await prisma.menuMedia.delete({
      *   where: {
-     *     // ... filter to delete one MenuImage
+     *     // ... filter to delete one MenuMedia
      *   }
      * })
      * 
      */
-    delete<T extends MenuImageDeleteArgs>(args: SelectSubset<T, MenuImageDeleteArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends MenuMediaDeleteArgs>(args: SelectSubset<T, MenuMediaDeleteArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one MenuImage.
-     * @param {MenuImageUpdateArgs} args - Arguments to update one MenuImage.
+     * Update one MenuMedia.
+     * @param {MenuMediaUpdateArgs} args - Arguments to update one MenuMedia.
      * @example
-     * // Update one MenuImage
-     * const menuImage = await prisma.menuImage.update({
+     * // Update one MenuMedia
+     * const menuMedia = await prisma.menuMedia.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8123,30 +8407,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends MenuImageUpdateArgs>(args: SelectSubset<T, MenuImageUpdateArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends MenuMediaUpdateArgs>(args: SelectSubset<T, MenuMediaUpdateArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more MenuImages.
-     * @param {MenuImageDeleteManyArgs} args - Arguments to filter MenuImages to delete.
+     * Delete zero or more MenuMedias.
+     * @param {MenuMediaDeleteManyArgs} args - Arguments to filter MenuMedias to delete.
      * @example
-     * // Delete a few MenuImages
-     * const { count } = await prisma.menuImage.deleteMany({
+     * // Delete a few MenuMedias
+     * const { count } = await prisma.menuMedia.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends MenuImageDeleteManyArgs>(args?: SelectSubset<T, MenuImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends MenuMediaDeleteManyArgs>(args?: SelectSubset<T, MenuMediaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more MenuImages.
+     * Update zero or more MenuMedias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MenuImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {MenuMediaUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many MenuImages
-     * const menuImage = await prisma.menuImage.updateMany({
+     * // Update many MenuMedias
+     * const menuMedia = await prisma.menuMedia.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8156,14 +8440,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends MenuImageUpdateManyArgs>(args: SelectSubset<T, MenuImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends MenuMediaUpdateManyArgs>(args: SelectSubset<T, MenuMediaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more MenuImages and returns the data updated in the database.
-     * @param {MenuImageUpdateManyAndReturnArgs} args - Arguments to update many MenuImages.
+     * Update zero or more MenuMedias and returns the data updated in the database.
+     * @param {MenuMediaUpdateManyAndReturnArgs} args - Arguments to update many MenuMedias.
      * @example
-     * // Update many MenuImages
-     * const menuImage = await prisma.menuImage.updateManyAndReturn({
+     * // Update many MenuMedias
+     * const menuMedia = await prisma.menuMedia.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -8172,8 +8456,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more MenuImages and only return the `id`
-     * const menuImageWithIdOnly = await prisma.menuImage.updateManyAndReturn({
+     * // Update zero or more MenuMedias and only return the `id`
+     * const menuMediaWithIdOnly = await prisma.menuMedia.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -8186,56 +8470,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends MenuImageUpdateManyAndReturnArgs>(args: SelectSubset<T, MenuImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends MenuMediaUpdateManyAndReturnArgs>(args: SelectSubset<T, MenuMediaUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one MenuImage.
-     * @param {MenuImageUpsertArgs} args - Arguments to update or create a MenuImage.
+     * Create or update one MenuMedia.
+     * @param {MenuMediaUpsertArgs} args - Arguments to update or create a MenuMedia.
      * @example
-     * // Update or create a MenuImage
-     * const menuImage = await prisma.menuImage.upsert({
+     * // Update or create a MenuMedia
+     * const menuMedia = await prisma.menuMedia.upsert({
      *   create: {
-     *     // ... data to create a MenuImage
+     *     // ... data to create a MenuMedia
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the MenuImage we want to update
+     *     // ... the filter for the MenuMedia we want to update
      *   }
      * })
      */
-    upsert<T extends MenuImageUpsertArgs>(args: SelectSubset<T, MenuImageUpsertArgs<ExtArgs>>): Prisma__MenuImageClient<$Result.GetResult<Prisma.$MenuImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends MenuMediaUpsertArgs>(args: SelectSubset<T, MenuMediaUpsertArgs<ExtArgs>>): Prisma__MenuMediaClient<$Result.GetResult<Prisma.$MenuMediaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of MenuImages.
+     * Count the number of MenuMedias.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MenuImageCountArgs} args - Arguments to filter MenuImages to count.
+     * @param {MenuMediaCountArgs} args - Arguments to filter MenuMedias to count.
      * @example
-     * // Count the number of MenuImages
-     * const count = await prisma.menuImage.count({
+     * // Count the number of MenuMedias
+     * const count = await prisma.menuMedia.count({
      *   where: {
-     *     // ... the filter for the MenuImages we want to count
+     *     // ... the filter for the MenuMedias we want to count
      *   }
      * })
     **/
-    count<T extends MenuImageCountArgs>(
-      args?: Subset<T, MenuImageCountArgs>,
+    count<T extends MenuMediaCountArgs>(
+      args?: Subset<T, MenuMediaCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], MenuImageCountAggregateOutputType>
+          : GetScalarType<T['select'], MenuMediaCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a MenuImage.
+     * Allows you to perform aggregations operations on a MenuMedia.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MenuImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {MenuMediaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -8255,13 +8539,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends MenuImageAggregateArgs>(args: Subset<T, MenuImageAggregateArgs>): Prisma.PrismaPromise<GetMenuImageAggregateType<T>>
+    aggregate<T extends MenuMediaAggregateArgs>(args: Subset<T, MenuMediaAggregateArgs>): Prisma.PrismaPromise<GetMenuMediaAggregateType<T>>
 
     /**
-     * Group by MenuImage.
+     * Group by MenuMedia.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {MenuImageGroupByArgs} args - Group by arguments.
+     * @param {MenuMediaGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -8276,14 +8560,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends MenuImageGroupByArgs,
+      T extends MenuMediaGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: MenuImageGroupByArgs['orderBy'] }
-        : { orderBy?: MenuImageGroupByArgs['orderBy'] },
+        ? { orderBy: MenuMediaGroupByArgs['orderBy'] }
+        : { orderBy?: MenuMediaGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -8332,20 +8616,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, MenuImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMenuImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, MenuMediaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMenuMediaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the MenuImage model
+   * Fields of the MenuMedia model
    */
-  readonly fields: MenuImageFieldRefs;
+  readonly fields: MenuMediaFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for MenuImage.
+   * The delegate class that acts as a "Promise-like" for MenuMedia.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__MenuImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__MenuMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     menuItem<T extends MenuItemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MenuItemDefaultArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -8374,429 +8658,430 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the MenuImage model
+   * Fields of the MenuMedia model
    */
-  interface MenuImageFieldRefs {
-    readonly id: FieldRef<"MenuImage", 'String'>
-    readonly url: FieldRef<"MenuImage", 'String'>
-    readonly publicId: FieldRef<"MenuImage", 'String'>
-    readonly menuItemId: FieldRef<"MenuImage", 'String'>
+  interface MenuMediaFieldRefs {
+    readonly id: FieldRef<"MenuMedia", 'String'>
+    readonly url: FieldRef<"MenuMedia", 'String'>
+    readonly publicId: FieldRef<"MenuMedia", 'String'>
+    readonly mediaType: FieldRef<"MenuMedia", 'MediaType'>
+    readonly menuItemId: FieldRef<"MenuMedia", 'String'>
   }
     
 
   // Custom InputTypes
   /**
-   * MenuImage findUnique
+   * MenuMedia findUnique
    */
-  export type MenuImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * Filter, which MenuImage to fetch.
+     * Filter, which MenuMedia to fetch.
      */
-    where: MenuImageWhereUniqueInput
+    where: MenuMediaWhereUniqueInput
   }
 
   /**
-   * MenuImage findUniqueOrThrow
+   * MenuMedia findUniqueOrThrow
    */
-  export type MenuImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * Filter, which MenuImage to fetch.
+     * Filter, which MenuMedia to fetch.
      */
-    where: MenuImageWhereUniqueInput
+    where: MenuMediaWhereUniqueInput
   }
 
   /**
-   * MenuImage findFirst
+   * MenuMedia findFirst
    */
-  export type MenuImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * Filter, which MenuImage to fetch.
+     * Filter, which MenuMedia to fetch.
      */
-    where?: MenuImageWhereInput
+    where?: MenuMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MenuImages to fetch.
+     * Determine the order of MenuMedias to fetch.
      */
-    orderBy?: MenuImageOrderByWithRelationInput | MenuImageOrderByWithRelationInput[]
+    orderBy?: MenuMediaOrderByWithRelationInput | MenuMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for MenuImages.
+     * Sets the position for searching for MenuMedias.
      */
-    cursor?: MenuImageWhereUniqueInput
+    cursor?: MenuMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MenuImages from the position of the cursor.
+     * Take `±n` MenuMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MenuImages.
+     * Skip the first `n` MenuMedias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of MenuImages.
+     * Filter by unique combinations of MenuMedias.
      */
-    distinct?: MenuImageScalarFieldEnum | MenuImageScalarFieldEnum[]
+    distinct?: MenuMediaScalarFieldEnum | MenuMediaScalarFieldEnum[]
   }
 
   /**
-   * MenuImage findFirstOrThrow
+   * MenuMedia findFirstOrThrow
    */
-  export type MenuImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * Filter, which MenuImage to fetch.
+     * Filter, which MenuMedia to fetch.
      */
-    where?: MenuImageWhereInput
+    where?: MenuMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MenuImages to fetch.
+     * Determine the order of MenuMedias to fetch.
      */
-    orderBy?: MenuImageOrderByWithRelationInput | MenuImageOrderByWithRelationInput[]
+    orderBy?: MenuMediaOrderByWithRelationInput | MenuMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for MenuImages.
+     * Sets the position for searching for MenuMedias.
      */
-    cursor?: MenuImageWhereUniqueInput
+    cursor?: MenuMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MenuImages from the position of the cursor.
+     * Take `±n` MenuMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MenuImages.
+     * Skip the first `n` MenuMedias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of MenuImages.
+     * Filter by unique combinations of MenuMedias.
      */
-    distinct?: MenuImageScalarFieldEnum | MenuImageScalarFieldEnum[]
+    distinct?: MenuMediaScalarFieldEnum | MenuMediaScalarFieldEnum[]
   }
 
   /**
-   * MenuImage findMany
+   * MenuMedia findMany
    */
-  export type MenuImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * Filter, which MenuImages to fetch.
+     * Filter, which MenuMedias to fetch.
      */
-    where?: MenuImageWhereInput
+    where?: MenuMediaWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of MenuImages to fetch.
+     * Determine the order of MenuMedias to fetch.
      */
-    orderBy?: MenuImageOrderByWithRelationInput | MenuImageOrderByWithRelationInput[]
+    orderBy?: MenuMediaOrderByWithRelationInput | MenuMediaOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing MenuImages.
+     * Sets the position for listing MenuMedias.
      */
-    cursor?: MenuImageWhereUniqueInput
+    cursor?: MenuMediaWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` MenuImages from the position of the cursor.
+     * Take `±n` MenuMedias from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` MenuImages.
+     * Skip the first `n` MenuMedias.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of MenuImages.
+     * Filter by unique combinations of MenuMedias.
      */
-    distinct?: MenuImageScalarFieldEnum | MenuImageScalarFieldEnum[]
+    distinct?: MenuMediaScalarFieldEnum | MenuMediaScalarFieldEnum[]
   }
 
   /**
-   * MenuImage create
+   * MenuMedia create
    */
-  export type MenuImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * The data needed to create a MenuImage.
+     * The data needed to create a MenuMedia.
      */
-    data: XOR<MenuImageCreateInput, MenuImageUncheckedCreateInput>
+    data: XOR<MenuMediaCreateInput, MenuMediaUncheckedCreateInput>
   }
 
   /**
-   * MenuImage createMany
+   * MenuMedia createMany
    */
-  export type MenuImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many MenuImages.
+     * The data used to create many MenuMedias.
      */
-    data: MenuImageCreateManyInput | MenuImageCreateManyInput[]
+    data: MenuMediaCreateManyInput | MenuMediaCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * MenuImage createManyAndReturn
+   * MenuMedia createManyAndReturn
    */
-  export type MenuImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelectCreateManyAndReturn<ExtArgs> | null
+    select?: MenuMediaSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
-     * The data used to create many MenuImages.
+     * The data used to create many MenuMedias.
      */
-    data: MenuImageCreateManyInput | MenuImageCreateManyInput[]
+    data: MenuMediaCreateManyInput | MenuMediaCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: MenuMediaIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * MenuImage update
+   * MenuMedia update
    */
-  export type MenuImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * The data needed to update a MenuImage.
+     * The data needed to update a MenuMedia.
      */
-    data: XOR<MenuImageUpdateInput, MenuImageUncheckedUpdateInput>
+    data: XOR<MenuMediaUpdateInput, MenuMediaUncheckedUpdateInput>
     /**
-     * Choose, which MenuImage to update.
+     * Choose, which MenuMedia to update.
      */
-    where: MenuImageWhereUniqueInput
+    where: MenuMediaWhereUniqueInput
   }
 
   /**
-   * MenuImage updateMany
+   * MenuMedia updateMany
    */
-  export type MenuImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update MenuImages.
+     * The data used to update MenuMedias.
      */
-    data: XOR<MenuImageUpdateManyMutationInput, MenuImageUncheckedUpdateManyInput>
+    data: XOR<MenuMediaUpdateManyMutationInput, MenuMediaUncheckedUpdateManyInput>
     /**
-     * Filter which MenuImages to update
+     * Filter which MenuMedias to update
      */
-    where?: MenuImageWhereInput
+    where?: MenuMediaWhereInput
     /**
-     * Limit how many MenuImages to update.
+     * Limit how many MenuMedias to update.
      */
     limit?: number
   }
 
   /**
-   * MenuImage updateManyAndReturn
+   * MenuMedia updateManyAndReturn
    */
-  export type MenuImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: MenuMediaSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
-     * The data used to update MenuImages.
+     * The data used to update MenuMedias.
      */
-    data: XOR<MenuImageUpdateManyMutationInput, MenuImageUncheckedUpdateManyInput>
+    data: XOR<MenuMediaUpdateManyMutationInput, MenuMediaUncheckedUpdateManyInput>
     /**
-     * Filter which MenuImages to update
+     * Filter which MenuMedias to update
      */
-    where?: MenuImageWhereInput
+    where?: MenuMediaWhereInput
     /**
-     * Limit how many MenuImages to update.
+     * Limit how many MenuMedias to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: MenuMediaIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * MenuImage upsert
+   * MenuMedia upsert
    */
-  export type MenuImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * The filter to search for the MenuImage to update in case it exists.
+     * The filter to search for the MenuMedia to update in case it exists.
      */
-    where: MenuImageWhereUniqueInput
+    where: MenuMediaWhereUniqueInput
     /**
-     * In case the MenuImage found by the `where` argument doesn't exist, create a new MenuImage with this data.
+     * In case the MenuMedia found by the `where` argument doesn't exist, create a new MenuMedia with this data.
      */
-    create: XOR<MenuImageCreateInput, MenuImageUncheckedCreateInput>
+    create: XOR<MenuMediaCreateInput, MenuMediaUncheckedCreateInput>
     /**
-     * In case the MenuImage was found with the provided `where` argument, update it with this data.
+     * In case the MenuMedia was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<MenuImageUpdateInput, MenuImageUncheckedUpdateInput>
+    update: XOR<MenuMediaUpdateInput, MenuMediaUncheckedUpdateInput>
   }
 
   /**
-   * MenuImage delete
+   * MenuMedia delete
    */
-  export type MenuImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
     /**
-     * Filter which MenuImage to delete.
+     * Filter which MenuMedia to delete.
      */
-    where: MenuImageWhereUniqueInput
+    where: MenuMediaWhereUniqueInput
   }
 
   /**
-   * MenuImage deleteMany
+   * MenuMedia deleteMany
    */
-  export type MenuImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which MenuImages to delete
+     * Filter which MenuMedias to delete
      */
-    where?: MenuImageWhereInput
+    where?: MenuMediaWhereInput
     /**
-     * Limit how many MenuImages to delete.
+     * Limit how many MenuMedias to delete.
      */
     limit?: number
   }
 
   /**
-   * MenuImage without action
+   * MenuMedia without action
    */
-  export type MenuImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MenuMediaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the MenuImage
+     * Select specific fields to fetch from the MenuMedia
      */
-    select?: MenuImageSelect<ExtArgs> | null
+    select?: MenuMediaSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the MenuImage
+     * Omit specific fields from the MenuMedia
      */
-    omit?: MenuImageOmit<ExtArgs> | null
+    omit?: MenuMediaOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MenuImageInclude<ExtArgs> | null
+    include?: MenuMediaInclude<ExtArgs> | null
   }
 
 
@@ -12324,6 +12609,1137 @@ export namespace Prisma {
 
 
   /**
+   * Model Review
+   */
+
+  export type AggregateReview = {
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  export type ReviewAvgAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type ReviewSumAggregateOutputType = {
+    rating: number | null
+  }
+
+  export type ReviewMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    menuItemId: string | null
+    rating: number | null
+    comment: string | null
+    isApproved: boolean | null
+    createdAt: Date | null
+  }
+
+  export type ReviewMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    menuItemId: string | null
+    rating: number | null
+    comment: string | null
+    isApproved: boolean | null
+    createdAt: Date | null
+  }
+
+  export type ReviewCountAggregateOutputType = {
+    id: number
+    userId: number
+    menuItemId: number
+    rating: number
+    comment: number
+    isApproved: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ReviewAvgAggregateInputType = {
+    rating?: true
+  }
+
+  export type ReviewSumAggregateInputType = {
+    rating?: true
+  }
+
+  export type ReviewMinAggregateInputType = {
+    id?: true
+    userId?: true
+    menuItemId?: true
+    rating?: true
+    comment?: true
+    isApproved?: true
+    createdAt?: true
+  }
+
+  export type ReviewMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    menuItemId?: true
+    rating?: true
+    comment?: true
+    isApproved?: true
+    createdAt?: true
+  }
+
+  export type ReviewCountAggregateInputType = {
+    id?: true
+    userId?: true
+    menuItemId?: true
+    rating?: true
+    comment?: true
+    isApproved?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ReviewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Review to aggregate.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Reviews
+    **/
+    _count?: true | ReviewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: ReviewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ReviewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ReviewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type GetReviewAggregateType<T extends ReviewAggregateArgs> = {
+        [P in keyof T & keyof AggregateReview]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateReview[P]>
+      : GetScalarType<T[P], AggregateReview[P]>
+  }
+
+
+
+
+  export type ReviewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ReviewWhereInput
+    orderBy?: ReviewOrderByWithAggregationInput | ReviewOrderByWithAggregationInput[]
+    by: ReviewScalarFieldEnum[] | ReviewScalarFieldEnum
+    having?: ReviewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ReviewCountAggregateInputType | true
+    _avg?: ReviewAvgAggregateInputType
+    _sum?: ReviewSumAggregateInputType
+    _min?: ReviewMinAggregateInputType
+    _max?: ReviewMaxAggregateInputType
+  }
+
+  export type ReviewGroupByOutputType = {
+    id: string
+    userId: string
+    menuItemId: string
+    rating: number
+    comment: string | null
+    isApproved: boolean
+    createdAt: Date
+    _count: ReviewCountAggregateOutputType | null
+    _avg: ReviewAvgAggregateOutputType | null
+    _sum: ReviewSumAggregateOutputType | null
+    _min: ReviewMinAggregateOutputType | null
+    _max: ReviewMaxAggregateOutputType | null
+  }
+
+  type GetReviewGroupByPayload<T extends ReviewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ReviewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ReviewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+            : GetScalarType<T[P], ReviewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ReviewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    menuItemId?: boolean
+    rating?: boolean
+    comment?: boolean
+    isApproved?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    menuItemId?: boolean
+    rating?: boolean
+    comment?: boolean
+    isApproved?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    menuItemId?: boolean
+    rating?: boolean
+    comment?: boolean
+    isApproved?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["review"]>
+
+  export type ReviewSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    menuItemId?: boolean
+    rating?: boolean
+    comment?: boolean
+    isApproved?: boolean
+    createdAt?: boolean
+  }
+
+  export type ReviewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "menuItemId" | "rating" | "comment" | "isApproved" | "createdAt", ExtArgs["result"]["review"]>
+  export type ReviewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
+  }
+  export type ReviewIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
+  }
+  export type ReviewIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    menuItem?: boolean | MenuItemDefaultArgs<ExtArgs>
+  }
+
+  export type $ReviewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Review"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      menuItem: Prisma.$MenuItemPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      menuItemId: string
+      rating: number
+      comment: string | null
+      isApproved: boolean
+      createdAt: Date
+    }, ExtArgs["result"]["review"]>
+    composites: {}
+  }
+
+  type ReviewGetPayload<S extends boolean | null | undefined | ReviewDefaultArgs> = $Result.GetResult<Prisma.$ReviewPayload, S>
+
+  type ReviewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ReviewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ReviewCountAggregateInputType | true
+    }
+
+  export interface ReviewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Review'], meta: { name: 'Review' } }
+    /**
+     * Find zero or one Review that matches the filter.
+     * @param {ReviewFindUniqueArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ReviewFindUniqueArgs>(args: SelectSubset<T, ReviewFindUniqueArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Review that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ReviewFindUniqueOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ReviewFindUniqueOrThrowArgs>(args: SelectSubset<T, ReviewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ReviewFindFirstArgs>(args?: SelectSubset<T, ReviewFindFirstArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Review that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindFirstOrThrowArgs} args - Arguments to find a Review
+     * @example
+     * // Get one Review
+     * const review = await prisma.review.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ReviewFindFirstOrThrowArgs>(args?: SelectSubset<T, ReviewFindFirstOrThrowArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Reviews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Reviews
+     * const reviews = await prisma.review.findMany()
+     * 
+     * // Get first 10 Reviews
+     * const reviews = await prisma.review.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const reviewWithIdOnly = await prisma.review.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ReviewFindManyArgs>(args?: SelectSubset<T, ReviewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Review.
+     * @param {ReviewCreateArgs} args - Arguments to create a Review.
+     * @example
+     * // Create one Review
+     * const Review = await prisma.review.create({
+     *   data: {
+     *     // ... data to create a Review
+     *   }
+     * })
+     * 
+     */
+    create<T extends ReviewCreateArgs>(args: SelectSubset<T, ReviewCreateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Reviews.
+     * @param {ReviewCreateManyArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ReviewCreateManyArgs>(args?: SelectSubset<T, ReviewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Reviews and returns the data saved in the database.
+     * @param {ReviewCreateManyAndReturnArgs} args - Arguments to create many Reviews.
+     * @example
+     * // Create many Reviews
+     * const review = await prisma.review.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ReviewCreateManyAndReturnArgs>(args?: SelectSubset<T, ReviewCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Review.
+     * @param {ReviewDeleteArgs} args - Arguments to delete one Review.
+     * @example
+     * // Delete one Review
+     * const Review = await prisma.review.delete({
+     *   where: {
+     *     // ... filter to delete one Review
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ReviewDeleteArgs>(args: SelectSubset<T, ReviewDeleteArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Review.
+     * @param {ReviewUpdateArgs} args - Arguments to update one Review.
+     * @example
+     * // Update one Review
+     * const review = await prisma.review.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ReviewUpdateArgs>(args: SelectSubset<T, ReviewUpdateArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Reviews.
+     * @param {ReviewDeleteManyArgs} args - Arguments to filter Reviews to delete.
+     * @example
+     * // Delete a few Reviews
+     * const { count } = await prisma.review.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ReviewDeleteManyArgs>(args?: SelectSubset<T, ReviewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ReviewUpdateManyArgs>(args: SelectSubset<T, ReviewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Reviews and returns the data updated in the database.
+     * @param {ReviewUpdateManyAndReturnArgs} args - Arguments to update many Reviews.
+     * @example
+     * // Update many Reviews
+     * const review = await prisma.review.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Reviews and only return the `id`
+     * const reviewWithIdOnly = await prisma.review.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReviewUpdateManyAndReturnArgs>(args: SelectSubset<T, ReviewUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Review.
+     * @param {ReviewUpsertArgs} args - Arguments to update or create a Review.
+     * @example
+     * // Update or create a Review
+     * const review = await prisma.review.upsert({
+     *   create: {
+     *     // ... data to create a Review
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Review we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ReviewUpsertArgs>(args: SelectSubset<T, ReviewUpsertArgs<ExtArgs>>): Prisma__ReviewClient<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Reviews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewCountArgs} args - Arguments to filter Reviews to count.
+     * @example
+     * // Count the number of Reviews
+     * const count = await prisma.review.count({
+     *   where: {
+     *     // ... the filter for the Reviews we want to count
+     *   }
+     * })
+    **/
+    count<T extends ReviewCountArgs>(
+      args?: Subset<T, ReviewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ReviewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ReviewAggregateArgs>(args: Subset<T, ReviewAggregateArgs>): Prisma.PrismaPromise<GetReviewAggregateType<T>>
+
+    /**
+     * Group by Review.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ReviewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ReviewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ReviewGroupByArgs['orderBy'] }
+        : { orderBy?: ReviewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ReviewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetReviewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Review model
+   */
+  readonly fields: ReviewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Review.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ReviewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    menuItem<T extends MenuItemDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MenuItemDefaultArgs<ExtArgs>>): Prisma__MenuItemClient<$Result.GetResult<Prisma.$MenuItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Review model
+   */
+  interface ReviewFieldRefs {
+    readonly id: FieldRef<"Review", 'String'>
+    readonly userId: FieldRef<"Review", 'String'>
+    readonly menuItemId: FieldRef<"Review", 'String'>
+    readonly rating: FieldRef<"Review", 'Int'>
+    readonly comment: FieldRef<"Review", 'String'>
+    readonly isApproved: FieldRef<"Review", 'Boolean'>
+    readonly createdAt: FieldRef<"Review", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Review findUnique
+   */
+  export type ReviewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findUniqueOrThrow
+   */
+  export type ReviewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review findFirst
+   */
+  export type ReviewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findFirstOrThrow
+   */
+  export type ReviewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Review to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review findMany
+   */
+  export type ReviewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter, which Reviews to fetch.
+     */
+    where?: ReviewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Reviews to fetch.
+     */
+    orderBy?: ReviewOrderByWithRelationInput | ReviewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Reviews.
+     */
+    cursor?: ReviewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Reviews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Reviews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Reviews.
+     */
+    distinct?: ReviewScalarFieldEnum | ReviewScalarFieldEnum[]
+  }
+
+  /**
+   * Review create
+   */
+  export type ReviewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Review.
+     */
+    data: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+  }
+
+  /**
+   * Review createMany
+   */
+  export type ReviewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Review createManyAndReturn
+   */
+  export type ReviewCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to create many Reviews.
+     */
+    data: ReviewCreateManyInput | ReviewCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review update
+   */
+  export type ReviewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Review.
+     */
+    data: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+    /**
+     * Choose, which Review to update.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review updateMany
+   */
+  export type ReviewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review updateManyAndReturn
+   */
+  export type ReviewUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * The data used to update Reviews.
+     */
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyInput>
+    /**
+     * Filter which Reviews to update
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Review upsert
+   */
+  export type ReviewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Review to update in case it exists.
+     */
+    where: ReviewWhereUniqueInput
+    /**
+     * In case the Review found by the `where` argument doesn't exist, create a new Review with this data.
+     */
+    create: XOR<ReviewCreateInput, ReviewUncheckedCreateInput>
+    /**
+     * In case the Review was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ReviewUpdateInput, ReviewUncheckedUpdateInput>
+  }
+
+  /**
+   * Review delete
+   */
+  export type ReviewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+    /**
+     * Filter which Review to delete.
+     */
+    where: ReviewWhereUniqueInput
+  }
+
+  /**
+   * Review deleteMany
+   */
+  export type ReviewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Reviews to delete
+     */
+    where?: ReviewWhereInput
+    /**
+     * Limit how many Reviews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Review without action
+   */
+  export type ReviewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Review
+     */
+    select?: ReviewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Review
+     */
+    omit?: ReviewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReviewInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Event
    */
 
@@ -14431,21 +15847,27 @@ export namespace Prisma {
 
   export type GalleryMinAggregateOutputType = {
     id: string | null
-    imageUrl: string | null
+    url: string | null
+    publicId: string | null
+    mediaType: $Enums.MediaType | null
     category: $Enums.GalleryCategory | null
     order: number | null
   }
 
   export type GalleryMaxAggregateOutputType = {
     id: string | null
-    imageUrl: string | null
+    url: string | null
+    publicId: string | null
+    mediaType: $Enums.MediaType | null
     category: $Enums.GalleryCategory | null
     order: number | null
   }
 
   export type GalleryCountAggregateOutputType = {
     id: number
-    imageUrl: number
+    url: number
+    publicId: number
+    mediaType: number
     category: number
     order: number
     _all: number
@@ -14462,21 +15884,27 @@ export namespace Prisma {
 
   export type GalleryMinAggregateInputType = {
     id?: true
-    imageUrl?: true
+    url?: true
+    publicId?: true
+    mediaType?: true
     category?: true
     order?: true
   }
 
   export type GalleryMaxAggregateInputType = {
     id?: true
-    imageUrl?: true
+    url?: true
+    publicId?: true
+    mediaType?: true
     category?: true
     order?: true
   }
 
   export type GalleryCountAggregateInputType = {
     id?: true
-    imageUrl?: true
+    url?: true
+    publicId?: true
+    mediaType?: true
     category?: true
     order?: true
     _all?: true
@@ -14570,7 +15998,9 @@ export namespace Prisma {
 
   export type GalleryGroupByOutputType = {
     id: string
-    imageUrl: string
+    url: string
+    publicId: string | null
+    mediaType: $Enums.MediaType
     category: $Enums.GalleryCategory
     order: number
     _count: GalleryCountAggregateOutputType | null
@@ -14596,40 +16026,50 @@ export namespace Prisma {
 
   export type GallerySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    imageUrl?: boolean
+    url?: boolean
+    publicId?: boolean
+    mediaType?: boolean
     category?: boolean
     order?: boolean
   }, ExtArgs["result"]["gallery"]>
 
   export type GallerySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    imageUrl?: boolean
+    url?: boolean
+    publicId?: boolean
+    mediaType?: boolean
     category?: boolean
     order?: boolean
   }, ExtArgs["result"]["gallery"]>
 
   export type GallerySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    imageUrl?: boolean
+    url?: boolean
+    publicId?: boolean
+    mediaType?: boolean
     category?: boolean
     order?: boolean
   }, ExtArgs["result"]["gallery"]>
 
   export type GallerySelectScalar = {
     id?: boolean
-    imageUrl?: boolean
+    url?: boolean
+    publicId?: boolean
+    mediaType?: boolean
     category?: boolean
     order?: boolean
   }
 
-  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "imageUrl" | "category" | "order", ExtArgs["result"]["gallery"]>
+  export type GalleryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "publicId" | "mediaType" | "category" | "order", ExtArgs["result"]["gallery"]>
 
   export type $GalleryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Gallery"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      imageUrl: string
+      url: string
+      publicId: string | null
+      mediaType: $Enums.MediaType
       category: $Enums.GalleryCategory
       order: number
     }, ExtArgs["result"]["gallery"]>
@@ -15056,7 +16496,9 @@ export namespace Prisma {
    */
   interface GalleryFieldRefs {
     readonly id: FieldRef<"Gallery", 'String'>
-    readonly imageUrl: FieldRef<"Gallery", 'String'>
+    readonly url: FieldRef<"Gallery", 'String'>
+    readonly publicId: FieldRef<"Gallery", 'String'>
+    readonly mediaType: FieldRef<"Gallery", 'MediaType'>
     readonly category: FieldRef<"Gallery", 'GalleryCategory'>
     readonly order: FieldRef<"Gallery", 'Int'>
   }
@@ -15485,6 +16927,7 @@ export namespace Prisma {
     name: 'name',
     slug: 'slug',
     description: 'description',
+    imageUrl: 'imageUrl',
     order: 'order'
   };
 
@@ -15497,14 +16940,20 @@ export namespace Prisma {
     name: 'name',
     slug: 'slug',
     description: 'description',
+    preparationTime: 'preparationTime',
+    cookingTime: 'cookingTime',
+    servingSize: 'servingSize',
+    ingredients: 'ingredients',
+    calories: 'calories',
     flavorProfile: 'flavorProfile',
     price: 'price',
-    imageUrl: 'imageUrl',
+    thumbnailUrl: 'thumbnailUrl',
     publicId: 'publicId',
     dietaryTags: 'dietaryTags',
     isSignature: 'isSignature',
     isAvailable: 'isAvailable',
     isFeatured: 'isFeatured',
+    averageRating: 'averageRating',
     order: 'order',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -15513,14 +16962,15 @@ export namespace Prisma {
   export type MenuItemScalarFieldEnum = (typeof MenuItemScalarFieldEnum)[keyof typeof MenuItemScalarFieldEnum]
 
 
-  export const MenuImageScalarFieldEnum: {
+  export const MenuMediaScalarFieldEnum: {
     id: 'id',
     url: 'url',
     publicId: 'publicId',
+    mediaType: 'mediaType',
     menuItemId: 'menuItemId'
   };
 
-  export type MenuImageScalarFieldEnum = (typeof MenuImageScalarFieldEnum)[keyof typeof MenuImageScalarFieldEnum]
+  export type MenuMediaScalarFieldEnum = (typeof MenuMediaScalarFieldEnum)[keyof typeof MenuMediaScalarFieldEnum]
 
 
   export const ServiceScalarFieldEnum: {
@@ -15569,6 +17019,19 @@ export namespace Prisma {
   export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
 
 
+  export const ReviewScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    menuItemId: 'menuItemId',
+    rating: 'rating',
+    comment: 'comment',
+    isApproved: 'isApproved',
+    createdAt: 'createdAt'
+  };
+
+  export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
   export const EventScalarFieldEnum: {
     id: 'id',
     title: 'title',
@@ -15597,7 +17060,9 @@ export namespace Prisma {
 
   export const GalleryScalarFieldEnum: {
     id: 'id',
-    imageUrl: 'imageUrl',
+    url: 'url',
+    publicId: 'publicId',
+    mediaType: 'mediaType',
     category: 'category',
     order: 'order'
   };
@@ -15712,6 +17177,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'MediaType'
+   */
+  export type EnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MediaType'>
+    
+
+
+  /**
+   * Reference to a field of type 'MediaType[]'
+   */
+  export type ListEnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MediaType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'BudgetRange'
    */
   export type EnumBudgetRangeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BudgetRange'>
@@ -15751,20 +17244,6 @@ export namespace Prisma {
    */
   export type ListEnumGalleryCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'GalleryCategory[]'>
     
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
   /**
    * Deep Input Types
    */
@@ -15786,6 +17265,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
     bookings?: BookingListRelationFilter
+    reviews?: ReviewListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -15801,6 +17281,7 @@ export namespace Prisma {
     sessions?: SessionOrderByRelationAggregateInput
     accounts?: AccountOrderByRelationAggregateInput
     bookings?: BookingOrderByRelationAggregateInput
+    reviews?: ReviewOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -15819,6 +17300,7 @@ export namespace Prisma {
     sessions?: SessionListRelationFilter
     accounts?: AccountListRelationFilter
     bookings?: BookingListRelationFilter
+    reviews?: ReviewListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -15964,6 +17446,7 @@ export namespace Prisma {
     name?: StringFilter<"MenuCategory"> | string
     slug?: StringFilter<"MenuCategory"> | string
     description?: StringNullableFilter<"MenuCategory"> | string | null
+    imageUrl?: StringNullableFilter<"MenuCategory"> | string | null
     order?: IntFilter<"MenuCategory"> | number
     items?: MenuItemListRelationFilter
   }
@@ -15973,6 +17456,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     order?: SortOrder
     items?: MenuItemOrderByRelationAggregateInput
   }
@@ -15985,6 +17469,7 @@ export namespace Prisma {
     OR?: MenuCategoryWhereInput[]
     NOT?: MenuCategoryWhereInput | MenuCategoryWhereInput[]
     description?: StringNullableFilter<"MenuCategory"> | string | null
+    imageUrl?: StringNullableFilter<"MenuCategory"> | string | null
     order?: IntFilter<"MenuCategory"> | number
     items?: MenuItemListRelationFilter
   }, "id" | "name" | "slug">
@@ -15994,6 +17479,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     order?: SortOrder
     _count?: MenuCategoryCountOrderByAggregateInput
     _avg?: MenuCategoryAvgOrderByAggregateInput
@@ -16010,6 +17496,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"MenuCategory"> | string
     slug?: StringWithAggregatesFilter<"MenuCategory"> | string
     description?: StringNullableWithAggregatesFilter<"MenuCategory"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"MenuCategory"> | string | null
     order?: IntWithAggregatesFilter<"MenuCategory"> | number
   }
 
@@ -16022,19 +17509,26 @@ export namespace Prisma {
     name?: StringFilter<"MenuItem"> | string
     slug?: StringFilter<"MenuItem"> | string
     description?: StringFilter<"MenuItem"> | string
+    preparationTime?: StringNullableFilter<"MenuItem"> | string | null
+    cookingTime?: StringNullableFilter<"MenuItem"> | string | null
+    servingSize?: StringNullableFilter<"MenuItem"> | string | null
+    ingredients?: StringNullableListFilter<"MenuItem">
+    calories?: IntNullableFilter<"MenuItem"> | number | null
     flavorProfile?: StringNullableFilter<"MenuItem"> | string | null
     price?: DecimalNullableFilter<"MenuItem"> | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: StringNullableFilter<"MenuItem"> | string | null
+    thumbnailUrl?: StringNullableFilter<"MenuItem"> | string | null
     publicId?: StringNullableFilter<"MenuItem"> | string | null
     dietaryTags?: StringNullableListFilter<"MenuItem">
     isSignature?: BoolFilter<"MenuItem"> | boolean
     isAvailable?: BoolFilter<"MenuItem"> | boolean
     isFeatured?: BoolFilter<"MenuItem"> | boolean
+    averageRating?: FloatNullableFilter<"MenuItem"> | number | null
     order?: IntFilter<"MenuItem"> | number
     createdAt?: DateTimeFilter<"MenuItem"> | Date | string
     updatedAt?: DateTimeFilter<"MenuItem"> | Date | string
     category?: XOR<MenuCategoryScalarRelationFilter, MenuCategoryWhereInput>
-    images?: MenuImageListRelationFilter
+    media?: MenuMediaListRelationFilter
+    reviews?: ReviewListRelationFilter
   }
 
   export type MenuItemOrderByWithRelationInput = {
@@ -16043,19 +17537,26 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    preparationTime?: SortOrderInput | SortOrder
+    cookingTime?: SortOrderInput | SortOrder
+    servingSize?: SortOrderInput | SortOrder
+    ingredients?: SortOrder
+    calories?: SortOrderInput | SortOrder
     flavorProfile?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
-    imageUrl?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
     publicId?: SortOrderInput | SortOrder
     dietaryTags?: SortOrder
     isSignature?: SortOrder
     isAvailable?: SortOrder
     isFeatured?: SortOrder
+    averageRating?: SortOrderInput | SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     category?: MenuCategoryOrderByWithRelationInput
-    images?: MenuImageOrderByRelationAggregateInput
+    media?: MenuMediaOrderByRelationAggregateInput
+    reviews?: ReviewOrderByRelationAggregateInput
   }
 
   export type MenuItemWhereUniqueInput = Prisma.AtLeast<{
@@ -16067,19 +17568,26 @@ export namespace Prisma {
     categoryId?: StringFilter<"MenuItem"> | string
     name?: StringFilter<"MenuItem"> | string
     description?: StringFilter<"MenuItem"> | string
+    preparationTime?: StringNullableFilter<"MenuItem"> | string | null
+    cookingTime?: StringNullableFilter<"MenuItem"> | string | null
+    servingSize?: StringNullableFilter<"MenuItem"> | string | null
+    ingredients?: StringNullableListFilter<"MenuItem">
+    calories?: IntNullableFilter<"MenuItem"> | number | null
     flavorProfile?: StringNullableFilter<"MenuItem"> | string | null
     price?: DecimalNullableFilter<"MenuItem"> | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: StringNullableFilter<"MenuItem"> | string | null
+    thumbnailUrl?: StringNullableFilter<"MenuItem"> | string | null
     publicId?: StringNullableFilter<"MenuItem"> | string | null
     dietaryTags?: StringNullableListFilter<"MenuItem">
     isSignature?: BoolFilter<"MenuItem"> | boolean
     isAvailable?: BoolFilter<"MenuItem"> | boolean
     isFeatured?: BoolFilter<"MenuItem"> | boolean
+    averageRating?: FloatNullableFilter<"MenuItem"> | number | null
     order?: IntFilter<"MenuItem"> | number
     createdAt?: DateTimeFilter<"MenuItem"> | Date | string
     updatedAt?: DateTimeFilter<"MenuItem"> | Date | string
     category?: XOR<MenuCategoryScalarRelationFilter, MenuCategoryWhereInput>
-    images?: MenuImageListRelationFilter
+    media?: MenuMediaListRelationFilter
+    reviews?: ReviewListRelationFilter
   }, "id" | "slug">
 
   export type MenuItemOrderByWithAggregationInput = {
@@ -16088,14 +17596,20 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    preparationTime?: SortOrderInput | SortOrder
+    cookingTime?: SortOrderInput | SortOrder
+    servingSize?: SortOrderInput | SortOrder
+    ingredients?: SortOrder
+    calories?: SortOrderInput | SortOrder
     flavorProfile?: SortOrderInput | SortOrder
     price?: SortOrderInput | SortOrder
-    imageUrl?: SortOrderInput | SortOrder
+    thumbnailUrl?: SortOrderInput | SortOrder
     publicId?: SortOrderInput | SortOrder
     dietaryTags?: SortOrder
     isSignature?: SortOrder
     isAvailable?: SortOrder
     isFeatured?: SortOrder
+    averageRating?: SortOrderInput | SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16115,67 +17629,78 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"MenuItem"> | string
     slug?: StringWithAggregatesFilter<"MenuItem"> | string
     description?: StringWithAggregatesFilter<"MenuItem"> | string
+    preparationTime?: StringNullableWithAggregatesFilter<"MenuItem"> | string | null
+    cookingTime?: StringNullableWithAggregatesFilter<"MenuItem"> | string | null
+    servingSize?: StringNullableWithAggregatesFilter<"MenuItem"> | string | null
+    ingredients?: StringNullableListFilter<"MenuItem">
+    calories?: IntNullableWithAggregatesFilter<"MenuItem"> | number | null
     flavorProfile?: StringNullableWithAggregatesFilter<"MenuItem"> | string | null
     price?: DecimalNullableWithAggregatesFilter<"MenuItem"> | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: StringNullableWithAggregatesFilter<"MenuItem"> | string | null
+    thumbnailUrl?: StringNullableWithAggregatesFilter<"MenuItem"> | string | null
     publicId?: StringNullableWithAggregatesFilter<"MenuItem"> | string | null
     dietaryTags?: StringNullableListFilter<"MenuItem">
     isSignature?: BoolWithAggregatesFilter<"MenuItem"> | boolean
     isAvailable?: BoolWithAggregatesFilter<"MenuItem"> | boolean
     isFeatured?: BoolWithAggregatesFilter<"MenuItem"> | boolean
+    averageRating?: FloatNullableWithAggregatesFilter<"MenuItem"> | number | null
     order?: IntWithAggregatesFilter<"MenuItem"> | number
     createdAt?: DateTimeWithAggregatesFilter<"MenuItem"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"MenuItem"> | Date | string
   }
 
-  export type MenuImageWhereInput = {
-    AND?: MenuImageWhereInput | MenuImageWhereInput[]
-    OR?: MenuImageWhereInput[]
-    NOT?: MenuImageWhereInput | MenuImageWhereInput[]
-    id?: StringFilter<"MenuImage"> | string
-    url?: StringFilter<"MenuImage"> | string
-    publicId?: StringNullableFilter<"MenuImage"> | string | null
-    menuItemId?: StringFilter<"MenuImage"> | string
+  export type MenuMediaWhereInput = {
+    AND?: MenuMediaWhereInput | MenuMediaWhereInput[]
+    OR?: MenuMediaWhereInput[]
+    NOT?: MenuMediaWhereInput | MenuMediaWhereInput[]
+    id?: StringFilter<"MenuMedia"> | string
+    url?: StringFilter<"MenuMedia"> | string
+    publicId?: StringNullableFilter<"MenuMedia"> | string | null
+    mediaType?: EnumMediaTypeFilter<"MenuMedia"> | $Enums.MediaType
+    menuItemId?: StringFilter<"MenuMedia"> | string
     menuItem?: XOR<MenuItemScalarRelationFilter, MenuItemWhereInput>
   }
 
-  export type MenuImageOrderByWithRelationInput = {
+  export type MenuMediaOrderByWithRelationInput = {
     id?: SortOrder
     url?: SortOrder
     publicId?: SortOrderInput | SortOrder
+    mediaType?: SortOrder
     menuItemId?: SortOrder
     menuItem?: MenuItemOrderByWithRelationInput
   }
 
-  export type MenuImageWhereUniqueInput = Prisma.AtLeast<{
+  export type MenuMediaWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: MenuImageWhereInput | MenuImageWhereInput[]
-    OR?: MenuImageWhereInput[]
-    NOT?: MenuImageWhereInput | MenuImageWhereInput[]
-    url?: StringFilter<"MenuImage"> | string
-    publicId?: StringNullableFilter<"MenuImage"> | string | null
-    menuItemId?: StringFilter<"MenuImage"> | string
+    AND?: MenuMediaWhereInput | MenuMediaWhereInput[]
+    OR?: MenuMediaWhereInput[]
+    NOT?: MenuMediaWhereInput | MenuMediaWhereInput[]
+    url?: StringFilter<"MenuMedia"> | string
+    publicId?: StringNullableFilter<"MenuMedia"> | string | null
+    mediaType?: EnumMediaTypeFilter<"MenuMedia"> | $Enums.MediaType
+    menuItemId?: StringFilter<"MenuMedia"> | string
     menuItem?: XOR<MenuItemScalarRelationFilter, MenuItemWhereInput>
   }, "id">
 
-  export type MenuImageOrderByWithAggregationInput = {
+  export type MenuMediaOrderByWithAggregationInput = {
     id?: SortOrder
     url?: SortOrder
     publicId?: SortOrderInput | SortOrder
+    mediaType?: SortOrder
     menuItemId?: SortOrder
-    _count?: MenuImageCountOrderByAggregateInput
-    _max?: MenuImageMaxOrderByAggregateInput
-    _min?: MenuImageMinOrderByAggregateInput
+    _count?: MenuMediaCountOrderByAggregateInput
+    _max?: MenuMediaMaxOrderByAggregateInput
+    _min?: MenuMediaMinOrderByAggregateInput
   }
 
-  export type MenuImageScalarWhereWithAggregatesInput = {
-    AND?: MenuImageScalarWhereWithAggregatesInput | MenuImageScalarWhereWithAggregatesInput[]
-    OR?: MenuImageScalarWhereWithAggregatesInput[]
-    NOT?: MenuImageScalarWhereWithAggregatesInput | MenuImageScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"MenuImage"> | string
-    url?: StringWithAggregatesFilter<"MenuImage"> | string
-    publicId?: StringNullableWithAggregatesFilter<"MenuImage"> | string | null
-    menuItemId?: StringWithAggregatesFilter<"MenuImage"> | string
+  export type MenuMediaScalarWhereWithAggregatesInput = {
+    AND?: MenuMediaScalarWhereWithAggregatesInput | MenuMediaScalarWhereWithAggregatesInput[]
+    OR?: MenuMediaScalarWhereWithAggregatesInput[]
+    NOT?: MenuMediaScalarWhereWithAggregatesInput | MenuMediaScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MenuMedia"> | string
+    url?: StringWithAggregatesFilter<"MenuMedia"> | string
+    publicId?: StringNullableWithAggregatesFilter<"MenuMedia"> | string | null
+    mediaType?: EnumMediaTypeWithAggregatesFilter<"MenuMedia"> | $Enums.MediaType
+    menuItemId?: StringWithAggregatesFilter<"MenuMedia"> | string
   }
 
   export type ServiceWhereInput = {
@@ -16420,6 +17945,76 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Booking"> | Date | string
   }
 
+  export type ReviewWhereInput = {
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    id?: StringFilter<"Review"> | string
+    userId?: StringFilter<"Review"> | string
+    menuItemId?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    comment?: StringNullableFilter<"Review"> | string | null
+    isApproved?: BoolFilter<"Review"> | boolean
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    menuItem?: XOR<MenuItemScalarRelationFilter, MenuItemWhereInput>
+  }
+
+  export type ReviewOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    menuItemId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    isApproved?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    menuItem?: MenuItemOrderByWithRelationInput
+  }
+
+  export type ReviewWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ReviewWhereInput | ReviewWhereInput[]
+    OR?: ReviewWhereInput[]
+    NOT?: ReviewWhereInput | ReviewWhereInput[]
+    userId?: StringFilter<"Review"> | string
+    menuItemId?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    comment?: StringNullableFilter<"Review"> | string | null
+    isApproved?: BoolFilter<"Review"> | boolean
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    menuItem?: XOR<MenuItemScalarRelationFilter, MenuItemWhereInput>
+  }, "id">
+
+  export type ReviewOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    menuItemId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    isApproved?: SortOrder
+    createdAt?: SortOrder
+    _count?: ReviewCountOrderByAggregateInput
+    _avg?: ReviewAvgOrderByAggregateInput
+    _max?: ReviewMaxOrderByAggregateInput
+    _min?: ReviewMinOrderByAggregateInput
+    _sum?: ReviewSumOrderByAggregateInput
+  }
+
+  export type ReviewScalarWhereWithAggregatesInput = {
+    AND?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    OR?: ReviewScalarWhereWithAggregatesInput[]
+    NOT?: ReviewScalarWhereWithAggregatesInput | ReviewScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Review"> | string
+    userId?: StringWithAggregatesFilter<"Review"> | string
+    menuItemId?: StringWithAggregatesFilter<"Review"> | string
+    rating?: IntWithAggregatesFilter<"Review"> | number
+    comment?: StringNullableWithAggregatesFilter<"Review"> | string | null
+    isApproved?: BoolWithAggregatesFilter<"Review"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Review"> | Date | string
+  }
+
   export type EventWhereInput = {
     AND?: EventWhereInput | EventWhereInput[]
     OR?: EventWhereInput[]
@@ -16551,14 +18146,18 @@ export namespace Prisma {
     OR?: GalleryWhereInput[]
     NOT?: GalleryWhereInput | GalleryWhereInput[]
     id?: StringFilter<"Gallery"> | string
-    imageUrl?: StringFilter<"Gallery"> | string
+    url?: StringFilter<"Gallery"> | string
+    publicId?: StringNullableFilter<"Gallery"> | string | null
+    mediaType?: EnumMediaTypeFilter<"Gallery"> | $Enums.MediaType
     category?: EnumGalleryCategoryFilter<"Gallery"> | $Enums.GalleryCategory
     order?: IntFilter<"Gallery"> | number
   }
 
   export type GalleryOrderByWithRelationInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrderInput | SortOrder
+    mediaType?: SortOrder
     category?: SortOrder
     order?: SortOrder
   }
@@ -16568,14 +18167,18 @@ export namespace Prisma {
     AND?: GalleryWhereInput | GalleryWhereInput[]
     OR?: GalleryWhereInput[]
     NOT?: GalleryWhereInput | GalleryWhereInput[]
-    imageUrl?: StringFilter<"Gallery"> | string
+    url?: StringFilter<"Gallery"> | string
+    publicId?: StringNullableFilter<"Gallery"> | string | null
+    mediaType?: EnumMediaTypeFilter<"Gallery"> | $Enums.MediaType
     category?: EnumGalleryCategoryFilter<"Gallery"> | $Enums.GalleryCategory
     order?: IntFilter<"Gallery"> | number
   }, "id">
 
   export type GalleryOrderByWithAggregationInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrderInput | SortOrder
+    mediaType?: SortOrder
     category?: SortOrder
     order?: SortOrder
     _count?: GalleryCountOrderByAggregateInput
@@ -16590,7 +18193,9 @@ export namespace Prisma {
     OR?: GalleryScalarWhereWithAggregatesInput[]
     NOT?: GalleryScalarWhereWithAggregatesInput | GalleryScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Gallery"> | string
-    imageUrl?: StringWithAggregatesFilter<"Gallery"> | string
+    url?: StringWithAggregatesFilter<"Gallery"> | string
+    publicId?: StringNullableWithAggregatesFilter<"Gallery"> | string | null
+    mediaType?: EnumMediaTypeWithAggregatesFilter<"Gallery"> | $Enums.MediaType
     category?: EnumGalleryCategoryWithAggregatesFilter<"Gallery"> | $Enums.GalleryCategory
     order?: IntWithAggregatesFilter<"Gallery"> | number
   }
@@ -16608,6 +18213,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
     bookings?: BookingCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -16623,6 +18229,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     bookings?: BookingUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -16638,6 +18245,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
     bookings?: BookingUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -16653,6 +18261,7 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     bookings?: BookingUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -16799,6 +18408,7 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    imageUrl?: string | null
     order?: number
     items?: MenuItemCreateNestedManyWithoutCategoryInput
   }
@@ -16808,6 +18418,7 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    imageUrl?: string | null
     order?: number
     items?: MenuItemUncheckedCreateNestedManyWithoutCategoryInput
   }
@@ -16817,6 +18428,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     items?: MenuItemUpdateManyWithoutCategoryNestedInput
   }
@@ -16826,6 +18438,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
     items?: MenuItemUncheckedUpdateManyWithoutCategoryNestedInput
   }
@@ -16835,6 +18448,7 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    imageUrl?: string | null
     order?: number
   }
 
@@ -16843,6 +18457,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
   }
 
@@ -16851,6 +18466,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
   }
 
@@ -16859,19 +18475,26 @@ export namespace Prisma {
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     category: MenuCategoryCreateNestedOneWithoutItemsInput
-    images?: MenuImageCreateNestedManyWithoutMenuItemInput
+    media?: MenuMediaCreateNestedManyWithoutMenuItemInput
+    reviews?: ReviewCreateNestedManyWithoutMenuItemInput
   }
 
   export type MenuItemUncheckedCreateInput = {
@@ -16880,18 +18503,25 @@ export namespace Prisma {
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    images?: MenuImageUncheckedCreateNestedManyWithoutMenuItemInput
+    media?: MenuMediaUncheckedCreateNestedManyWithoutMenuItemInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutMenuItemInput
   }
 
   export type MenuItemUpdateInput = {
@@ -16899,19 +18529,26 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: MenuCategoryUpdateOneRequiredWithoutItemsNestedInput
-    images?: MenuImageUpdateManyWithoutMenuItemNestedInput
+    media?: MenuMediaUpdateManyWithoutMenuItemNestedInput
+    reviews?: ReviewUpdateManyWithoutMenuItemNestedInput
   }
 
   export type MenuItemUncheckedUpdateInput = {
@@ -16920,18 +18557,25 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: MenuImageUncheckedUpdateManyWithoutMenuItemNestedInput
+    media?: MenuMediaUncheckedUpdateManyWithoutMenuItemNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutMenuItemNestedInput
   }
 
   export type MenuItemCreateManyInput = {
@@ -16940,14 +18584,20 @@ export namespace Prisma {
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16958,14 +18608,20 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16977,64 +18633,77 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MenuImageCreateInput = {
+  export type MenuMediaCreateInput = {
     id?: string
     url: string
     publicId?: string | null
-    menuItem: MenuItemCreateNestedOneWithoutImagesInput
+    mediaType?: $Enums.MediaType
+    menuItem: MenuItemCreateNestedOneWithoutMediaInput
   }
 
-  export type MenuImageUncheckedCreateInput = {
+  export type MenuMediaUncheckedCreateInput = {
     id?: string
     url: string
     publicId?: string | null
+    mediaType?: $Enums.MediaType
     menuItemId: string
   }
 
-  export type MenuImageUpdateInput = {
+  export type MenuMediaUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
-    menuItem?: MenuItemUpdateOneRequiredWithoutImagesNestedInput
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+    menuItem?: MenuItemUpdateOneRequiredWithoutMediaNestedInput
   }
 
-  export type MenuImageUncheckedUpdateInput = {
+  export type MenuMediaUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
     menuItemId?: StringFieldUpdateOperationsInput | string
   }
 
-  export type MenuImageCreateManyInput = {
+  export type MenuMediaCreateManyInput = {
     id?: string
     url: string
     publicId?: string | null
+    mediaType?: $Enums.MediaType
     menuItemId: string
   }
 
-  export type MenuImageUpdateManyMutationInput = {
+  export type MenuMediaUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   }
 
-  export type MenuImageUncheckedUpdateManyInput = {
+  export type MenuMediaUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
     menuItemId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -17302,6 +18971,74 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ReviewCreateInput = {
+    id?: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+    menuItem: MenuItemCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateInput = {
+    id?: string
+    userId: string
+    menuItemId: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ReviewUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+    menuItem?: MenuItemUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    menuItemId?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewCreateManyInput = {
+    id?: string
+    userId: string
+    menuItemId: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ReviewUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    menuItemId?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type EventCreateInput = {
     id?: string
     title: string
@@ -17444,49 +19181,63 @@ export namespace Prisma {
 
   export type GalleryCreateInput = {
     id?: string
-    imageUrl: string
+    url: string
+    publicId?: string | null
+    mediaType?: $Enums.MediaType
     category?: $Enums.GalleryCategory
     order?: number
   }
 
   export type GalleryUncheckedCreateInput = {
     id?: string
-    imageUrl: string
+    url: string
+    publicId?: string | null
+    mediaType?: $Enums.MediaType
     category?: $Enums.GalleryCategory
     order?: number
   }
 
   export type GalleryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
     category?: EnumGalleryCategoryFieldUpdateOperationsInput | $Enums.GalleryCategory
     order?: IntFieldUpdateOperationsInput | number
   }
 
   export type GalleryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
     category?: EnumGalleryCategoryFieldUpdateOperationsInput | $Enums.GalleryCategory
     order?: IntFieldUpdateOperationsInput | number
   }
 
   export type GalleryCreateManyInput = {
     id?: string
-    imageUrl: string
+    url: string
+    publicId?: string | null
+    mediaType?: $Enums.MediaType
     category?: $Enums.GalleryCategory
     order?: number
   }
 
   export type GalleryUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
     category?: EnumGalleryCategoryFieldUpdateOperationsInput | $Enums.GalleryCategory
     order?: IntFieldUpdateOperationsInput | number
   }
 
   export type GalleryUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
     category?: EnumGalleryCategoryFieldUpdateOperationsInput | $Enums.GalleryCategory
     order?: IntFieldUpdateOperationsInput | number
   }
@@ -17562,6 +19313,12 @@ export namespace Prisma {
     none?: BookingWhereInput
   }
 
+  export type ReviewListRelationFilter = {
+    every?: ReviewWhereInput
+    some?: ReviewWhereInput
+    none?: ReviewWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -17576,6 +19333,10 @@ export namespace Prisma {
   }
 
   export type BookingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ReviewOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17759,6 +19520,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    imageUrl?: SortOrder
     order?: SortOrder
   }
 
@@ -17771,6 +19533,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    imageUrl?: SortOrder
     order?: SortOrder
   }
 
@@ -17779,6 +19542,7 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    imageUrl?: SortOrder
     order?: SortOrder
   }
 
@@ -17802,6 +19566,25 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type DecimalNullableFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
@@ -17813,12 +19596,15 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type MenuCategoryScalarRelationFilter = {
@@ -17826,13 +19612,13 @@ export namespace Prisma {
     isNot?: MenuCategoryWhereInput
   }
 
-  export type MenuImageListRelationFilter = {
-    every?: MenuImageWhereInput
-    some?: MenuImageWhereInput
-    none?: MenuImageWhereInput
+  export type MenuMediaListRelationFilter = {
+    every?: MenuMediaWhereInput
+    some?: MenuMediaWhereInput
+    none?: MenuMediaWhereInput
   }
 
-  export type MenuImageOrderByRelationAggregateInput = {
+  export type MenuMediaOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17842,21 +19628,29 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    preparationTime?: SortOrder
+    cookingTime?: SortOrder
+    servingSize?: SortOrder
+    ingredients?: SortOrder
+    calories?: SortOrder
     flavorProfile?: SortOrder
     price?: SortOrder
-    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     publicId?: SortOrder
     dietaryTags?: SortOrder
     isSignature?: SortOrder
     isAvailable?: SortOrder
     isFeatured?: SortOrder
+    averageRating?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type MenuItemAvgOrderByAggregateInput = {
+    calories?: SortOrder
     price?: SortOrder
+    averageRating?: SortOrder
     order?: SortOrder
   }
 
@@ -17866,13 +19660,18 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    preparationTime?: SortOrder
+    cookingTime?: SortOrder
+    servingSize?: SortOrder
+    calories?: SortOrder
     flavorProfile?: SortOrder
     price?: SortOrder
-    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     publicId?: SortOrder
     isSignature?: SortOrder
     isAvailable?: SortOrder
     isFeatured?: SortOrder
+    averageRating?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17884,21 +19683,44 @@ export namespace Prisma {
     name?: SortOrder
     slug?: SortOrder
     description?: SortOrder
+    preparationTime?: SortOrder
+    cookingTime?: SortOrder
+    servingSize?: SortOrder
+    calories?: SortOrder
     flavorProfile?: SortOrder
     price?: SortOrder
-    imageUrl?: SortOrder
+    thumbnailUrl?: SortOrder
     publicId?: SortOrder
     isSignature?: SortOrder
     isAvailable?: SortOrder
     isFeatured?: SortOrder
+    averageRating?: SortOrder
     order?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type MenuItemSumOrderByAggregateInput = {
+    calories?: SortOrder
     price?: SortOrder
+    averageRating?: SortOrder
     order?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17917,30 +19739,66 @@ export namespace Prisma {
     _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type EnumMediaTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MediaType | EnumMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMediaTypeFilter<$PrismaModel> | $Enums.MediaType
+  }
+
   export type MenuItemScalarRelationFilter = {
     is?: MenuItemWhereInput
     isNot?: MenuItemWhereInput
   }
 
-  export type MenuImageCountOrderByAggregateInput = {
+  export type MenuMediaCountOrderByAggregateInput = {
     id?: SortOrder
     url?: SortOrder
     publicId?: SortOrder
+    mediaType?: SortOrder
     menuItemId?: SortOrder
   }
 
-  export type MenuImageMaxOrderByAggregateInput = {
+  export type MenuMediaMaxOrderByAggregateInput = {
     id?: SortOrder
     url?: SortOrder
     publicId?: SortOrder
+    mediaType?: SortOrder
     menuItemId?: SortOrder
   }
 
-  export type MenuImageMinOrderByAggregateInput = {
+  export type MenuMediaMinOrderByAggregateInput = {
     id?: SortOrder
     url?: SortOrder
     publicId?: SortOrder
+    mediaType?: SortOrder
     menuItemId?: SortOrder
+  }
+
+  export type EnumMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MediaType | EnumMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.MediaType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMediaTypeFilter<$PrismaModel>
+    _max?: NestedEnumMediaTypeFilter<$PrismaModel>
   }
 
   export type PackageListRelationFilter = {
@@ -18130,6 +19988,44 @@ export namespace Prisma {
     _max?: NestedEnumBookingStatusFilter<$PrismaModel>
   }
 
+  export type ReviewCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    menuItemId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    isApproved?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReviewAvgOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
+  export type ReviewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    menuItemId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    isApproved?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReviewMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    menuItemId?: SortOrder
+    rating?: SortOrder
+    comment?: SortOrder
+    isApproved?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ReviewSumOrderByAggregateInput = {
+    rating?: SortOrder
+  }
+
   export type EventCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -18207,7 +20103,9 @@ export namespace Prisma {
 
   export type GalleryCountOrderByAggregateInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrder
+    mediaType?: SortOrder
     category?: SortOrder
     order?: SortOrder
   }
@@ -18218,14 +20116,18 @@ export namespace Prisma {
 
   export type GalleryMaxOrderByAggregateInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrder
+    mediaType?: SortOrder
     category?: SortOrder
     order?: SortOrder
   }
 
   export type GalleryMinOrderByAggregateInput = {
     id?: SortOrder
-    imageUrl?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrder
+    mediaType?: SortOrder
     category?: SortOrder
     order?: SortOrder
   }
@@ -18265,6 +20167,13 @@ export namespace Prisma {
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
   }
 
+  export type ReviewCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -18284,6 +20193,13 @@ export namespace Prisma {
     connectOrCreate?: BookingCreateOrConnectWithoutUserInput | BookingCreateOrConnectWithoutUserInput[]
     createMany?: BookingCreateManyUserInputEnvelope
     connect?: BookingWhereUniqueInput | BookingWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -18348,6 +20264,20 @@ export namespace Prisma {
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
   }
 
+  export type ReviewUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
@@ -18388,6 +20318,20 @@ export namespace Prisma {
     update?: BookingUpdateWithWhereUniqueWithoutUserInput | BookingUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: BookingUpdateManyWithWhereWithoutUserInput | BookingUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: BookingScalarWhereInput | BookingScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutSessionsInput = {
@@ -18468,6 +20412,10 @@ export namespace Prisma {
     deleteMany?: MenuItemScalarWhereInput | MenuItemScalarWhereInput[]
   }
 
+  export type MenuItemCreateingredientsInput = {
+    set: string[]
+  }
+
   export type MenuItemCreatedietaryTagsInput = {
     set: string[]
   }
@@ -18478,18 +20426,45 @@ export namespace Prisma {
     connect?: MenuCategoryWhereUniqueInput
   }
 
-  export type MenuImageCreateNestedManyWithoutMenuItemInput = {
-    create?: XOR<MenuImageCreateWithoutMenuItemInput, MenuImageUncheckedCreateWithoutMenuItemInput> | MenuImageCreateWithoutMenuItemInput[] | MenuImageUncheckedCreateWithoutMenuItemInput[]
-    connectOrCreate?: MenuImageCreateOrConnectWithoutMenuItemInput | MenuImageCreateOrConnectWithoutMenuItemInput[]
-    createMany?: MenuImageCreateManyMenuItemInputEnvelope
-    connect?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
+  export type MenuMediaCreateNestedManyWithoutMenuItemInput = {
+    create?: XOR<MenuMediaCreateWithoutMenuItemInput, MenuMediaUncheckedCreateWithoutMenuItemInput> | MenuMediaCreateWithoutMenuItemInput[] | MenuMediaUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: MenuMediaCreateOrConnectWithoutMenuItemInput | MenuMediaCreateOrConnectWithoutMenuItemInput[]
+    createMany?: MenuMediaCreateManyMenuItemInputEnvelope
+    connect?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
   }
 
-  export type MenuImageUncheckedCreateNestedManyWithoutMenuItemInput = {
-    create?: XOR<MenuImageCreateWithoutMenuItemInput, MenuImageUncheckedCreateWithoutMenuItemInput> | MenuImageCreateWithoutMenuItemInput[] | MenuImageUncheckedCreateWithoutMenuItemInput[]
-    connectOrCreate?: MenuImageCreateOrConnectWithoutMenuItemInput | MenuImageCreateOrConnectWithoutMenuItemInput[]
-    createMany?: MenuImageCreateManyMenuItemInputEnvelope
-    connect?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
+  export type ReviewCreateNestedManyWithoutMenuItemInput = {
+    create?: XOR<ReviewCreateWithoutMenuItemInput, ReviewUncheckedCreateWithoutMenuItemInput> | ReviewCreateWithoutMenuItemInput[] | ReviewUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutMenuItemInput | ReviewCreateOrConnectWithoutMenuItemInput[]
+    createMany?: ReviewCreateManyMenuItemInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type MenuMediaUncheckedCreateNestedManyWithoutMenuItemInput = {
+    create?: XOR<MenuMediaCreateWithoutMenuItemInput, MenuMediaUncheckedCreateWithoutMenuItemInput> | MenuMediaCreateWithoutMenuItemInput[] | MenuMediaUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: MenuMediaCreateOrConnectWithoutMenuItemInput | MenuMediaCreateOrConnectWithoutMenuItemInput[]
+    createMany?: MenuMediaCreateManyMenuItemInputEnvelope
+    connect?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+  }
+
+  export type ReviewUncheckedCreateNestedManyWithoutMenuItemInput = {
+    create?: XOR<ReviewCreateWithoutMenuItemInput, ReviewUncheckedCreateWithoutMenuItemInput> | ReviewCreateWithoutMenuItemInput[] | ReviewUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutMenuItemInput | ReviewCreateOrConnectWithoutMenuItemInput[]
+    createMany?: ReviewCreateManyMenuItemInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+  }
+
+  export type MenuItemUpdateingredientsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type NullableDecimalFieldUpdateOperationsInput = {
@@ -18505,6 +20480,14 @@ export namespace Prisma {
     push?: string | string[]
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type MenuCategoryUpdateOneRequiredWithoutItemsNestedInput = {
     create?: XOR<MenuCategoryCreateWithoutItemsInput, MenuCategoryUncheckedCreateWithoutItemsInput>
     connectOrCreate?: MenuCategoryCreateOrConnectWithoutItemsInput
@@ -18513,46 +20496,78 @@ export namespace Prisma {
     update?: XOR<XOR<MenuCategoryUpdateToOneWithWhereWithoutItemsInput, MenuCategoryUpdateWithoutItemsInput>, MenuCategoryUncheckedUpdateWithoutItemsInput>
   }
 
-  export type MenuImageUpdateManyWithoutMenuItemNestedInput = {
-    create?: XOR<MenuImageCreateWithoutMenuItemInput, MenuImageUncheckedCreateWithoutMenuItemInput> | MenuImageCreateWithoutMenuItemInput[] | MenuImageUncheckedCreateWithoutMenuItemInput[]
-    connectOrCreate?: MenuImageCreateOrConnectWithoutMenuItemInput | MenuImageCreateOrConnectWithoutMenuItemInput[]
-    upsert?: MenuImageUpsertWithWhereUniqueWithoutMenuItemInput | MenuImageUpsertWithWhereUniqueWithoutMenuItemInput[]
-    createMany?: MenuImageCreateManyMenuItemInputEnvelope
-    set?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    disconnect?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    delete?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    connect?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    update?: MenuImageUpdateWithWhereUniqueWithoutMenuItemInput | MenuImageUpdateWithWhereUniqueWithoutMenuItemInput[]
-    updateMany?: MenuImageUpdateManyWithWhereWithoutMenuItemInput | MenuImageUpdateManyWithWhereWithoutMenuItemInput[]
-    deleteMany?: MenuImageScalarWhereInput | MenuImageScalarWhereInput[]
+  export type MenuMediaUpdateManyWithoutMenuItemNestedInput = {
+    create?: XOR<MenuMediaCreateWithoutMenuItemInput, MenuMediaUncheckedCreateWithoutMenuItemInput> | MenuMediaCreateWithoutMenuItemInput[] | MenuMediaUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: MenuMediaCreateOrConnectWithoutMenuItemInput | MenuMediaCreateOrConnectWithoutMenuItemInput[]
+    upsert?: MenuMediaUpsertWithWhereUniqueWithoutMenuItemInput | MenuMediaUpsertWithWhereUniqueWithoutMenuItemInput[]
+    createMany?: MenuMediaCreateManyMenuItemInputEnvelope
+    set?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    disconnect?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    delete?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    connect?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    update?: MenuMediaUpdateWithWhereUniqueWithoutMenuItemInput | MenuMediaUpdateWithWhereUniqueWithoutMenuItemInput[]
+    updateMany?: MenuMediaUpdateManyWithWhereWithoutMenuItemInput | MenuMediaUpdateManyWithWhereWithoutMenuItemInput[]
+    deleteMany?: MenuMediaScalarWhereInput | MenuMediaScalarWhereInput[]
   }
 
-  export type MenuImageUncheckedUpdateManyWithoutMenuItemNestedInput = {
-    create?: XOR<MenuImageCreateWithoutMenuItemInput, MenuImageUncheckedCreateWithoutMenuItemInput> | MenuImageCreateWithoutMenuItemInput[] | MenuImageUncheckedCreateWithoutMenuItemInput[]
-    connectOrCreate?: MenuImageCreateOrConnectWithoutMenuItemInput | MenuImageCreateOrConnectWithoutMenuItemInput[]
-    upsert?: MenuImageUpsertWithWhereUniqueWithoutMenuItemInput | MenuImageUpsertWithWhereUniqueWithoutMenuItemInput[]
-    createMany?: MenuImageCreateManyMenuItemInputEnvelope
-    set?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    disconnect?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    delete?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    connect?: MenuImageWhereUniqueInput | MenuImageWhereUniqueInput[]
-    update?: MenuImageUpdateWithWhereUniqueWithoutMenuItemInput | MenuImageUpdateWithWhereUniqueWithoutMenuItemInput[]
-    updateMany?: MenuImageUpdateManyWithWhereWithoutMenuItemInput | MenuImageUpdateManyWithWhereWithoutMenuItemInput[]
-    deleteMany?: MenuImageScalarWhereInput | MenuImageScalarWhereInput[]
+  export type ReviewUpdateManyWithoutMenuItemNestedInput = {
+    create?: XOR<ReviewCreateWithoutMenuItemInput, ReviewUncheckedCreateWithoutMenuItemInput> | ReviewCreateWithoutMenuItemInput[] | ReviewUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutMenuItemInput | ReviewCreateOrConnectWithoutMenuItemInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutMenuItemInput | ReviewUpsertWithWhereUniqueWithoutMenuItemInput[]
+    createMany?: ReviewCreateManyMenuItemInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutMenuItemInput | ReviewUpdateWithWhereUniqueWithoutMenuItemInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutMenuItemInput | ReviewUpdateManyWithWhereWithoutMenuItemInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
-  export type MenuItemCreateNestedOneWithoutImagesInput = {
-    create?: XOR<MenuItemCreateWithoutImagesInput, MenuItemUncheckedCreateWithoutImagesInput>
-    connectOrCreate?: MenuItemCreateOrConnectWithoutImagesInput
+  export type MenuMediaUncheckedUpdateManyWithoutMenuItemNestedInput = {
+    create?: XOR<MenuMediaCreateWithoutMenuItemInput, MenuMediaUncheckedCreateWithoutMenuItemInput> | MenuMediaCreateWithoutMenuItemInput[] | MenuMediaUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: MenuMediaCreateOrConnectWithoutMenuItemInput | MenuMediaCreateOrConnectWithoutMenuItemInput[]
+    upsert?: MenuMediaUpsertWithWhereUniqueWithoutMenuItemInput | MenuMediaUpsertWithWhereUniqueWithoutMenuItemInput[]
+    createMany?: MenuMediaCreateManyMenuItemInputEnvelope
+    set?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    disconnect?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    delete?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    connect?: MenuMediaWhereUniqueInput | MenuMediaWhereUniqueInput[]
+    update?: MenuMediaUpdateWithWhereUniqueWithoutMenuItemInput | MenuMediaUpdateWithWhereUniqueWithoutMenuItemInput[]
+    updateMany?: MenuMediaUpdateManyWithWhereWithoutMenuItemInput | MenuMediaUpdateManyWithWhereWithoutMenuItemInput[]
+    deleteMany?: MenuMediaScalarWhereInput | MenuMediaScalarWhereInput[]
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutMenuItemNestedInput = {
+    create?: XOR<ReviewCreateWithoutMenuItemInput, ReviewUncheckedCreateWithoutMenuItemInput> | ReviewCreateWithoutMenuItemInput[] | ReviewUncheckedCreateWithoutMenuItemInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutMenuItemInput | ReviewCreateOrConnectWithoutMenuItemInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutMenuItemInput | ReviewUpsertWithWhereUniqueWithoutMenuItemInput[]
+    createMany?: ReviewCreateManyMenuItemInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutMenuItemInput | ReviewUpdateWithWhereUniqueWithoutMenuItemInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutMenuItemInput | ReviewUpdateManyWithWhereWithoutMenuItemInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+  }
+
+  export type MenuItemCreateNestedOneWithoutMediaInput = {
+    create?: XOR<MenuItemCreateWithoutMediaInput, MenuItemUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: MenuItemCreateOrConnectWithoutMediaInput
     connect?: MenuItemWhereUniqueInput
   }
 
-  export type MenuItemUpdateOneRequiredWithoutImagesNestedInput = {
-    create?: XOR<MenuItemCreateWithoutImagesInput, MenuItemUncheckedCreateWithoutImagesInput>
-    connectOrCreate?: MenuItemCreateOrConnectWithoutImagesInput
-    upsert?: MenuItemUpsertWithoutImagesInput
+  export type EnumMediaTypeFieldUpdateOperationsInput = {
+    set?: $Enums.MediaType
+  }
+
+  export type MenuItemUpdateOneRequiredWithoutMediaNestedInput = {
+    create?: XOR<MenuItemCreateWithoutMediaInput, MenuItemUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: MenuItemCreateOrConnectWithoutMediaInput
+    upsert?: MenuItemUpsertWithoutMediaInput
     connect?: MenuItemWhereUniqueInput
-    update?: XOR<XOR<MenuItemUpdateToOneWithWhereWithoutImagesInput, MenuItemUpdateWithoutImagesInput>, MenuItemUncheckedUpdateWithoutImagesInput>
+    update?: XOR<XOR<MenuItemUpdateToOneWithWhereWithoutMediaInput, MenuItemUpdateWithoutMediaInput>, MenuItemUncheckedUpdateWithoutMediaInput>
   }
 
   export type PackageCreateNestedManyWithoutServiceInput = {
@@ -18698,6 +20713,34 @@ export namespace Prisma {
     upsert?: ServiceUpsertWithoutBookingsInput
     connect?: ServiceWhereUniqueInput
     update?: XOR<XOR<ServiceUpdateToOneWithWhereWithoutBookingsInput, ServiceUpdateWithoutBookingsInput>, ServiceUncheckedUpdateWithoutBookingsInput>
+  }
+
+  export type UserCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type MenuItemCreateNestedOneWithoutReviewsInput = {
+    create?: XOR<MenuItemCreateWithoutReviewsInput, MenuItemUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: MenuItemCreateOrConnectWithoutReviewsInput
+    connect?: MenuItemWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutReviewsInput
+    upsert?: UserUpsertWithoutReviewsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReviewsInput, UserUpdateWithoutReviewsInput>, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type MenuItemUpdateOneRequiredWithoutReviewsNestedInput = {
+    create?: XOR<MenuItemCreateWithoutReviewsInput, MenuItemUncheckedCreateWithoutReviewsInput>
+    connectOrCreate?: MenuItemCreateOrConnectWithoutReviewsInput
+    upsert?: MenuItemUpsertWithoutReviewsInput
+    connect?: MenuItemWhereUniqueInput
+    update?: XOR<XOR<MenuItemUpdateToOneWithWhereWithoutReviewsInput, MenuItemUpdateWithoutReviewsInput>, MenuItemUncheckedUpdateWithoutReviewsInput>
   }
 
   export type EnumGalleryCategoryFieldUpdateOperationsInput = {
@@ -18881,6 +20924,33 @@ export namespace Prisma {
     not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
     in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel> | null
@@ -18895,6 +20965,39 @@ export namespace Prisma {
     _sum?: NestedDecimalNullableFilter<$PrismaModel>
     _min?: NestedDecimalNullableFilter<$PrismaModel>
     _max?: NestedDecimalNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type NestedEnumMediaTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.MediaType | EnumMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMediaTypeFilter<$PrismaModel> | $Enums.MediaType
+  }
+
+  export type NestedEnumMediaTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.MediaType | EnumMediaTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.MediaType[] | ListEnumMediaTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumMediaTypeWithAggregatesFilter<$PrismaModel> | $Enums.MediaType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumMediaTypeFilter<$PrismaModel>
+    _max?: NestedEnumMediaTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumBudgetRangeFilter<$PrismaModel = never> = {
@@ -19036,6 +21139,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ReviewCreateWithoutUserInput = {
+    id?: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+    menuItem: MenuItemCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutUserInput = {
+    id?: string
+    menuItemId: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewCreateManyUserInputEnvelope = {
+    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
     where: SessionWhereUniqueInput
     update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
@@ -19125,6 +21256,35 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Booking"> | Date | string
   }
 
+  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReviewScalarWhereInput = {
+    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    OR?: ReviewScalarWhereInput[]
+    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    id?: StringFilter<"Review"> | string
+    userId?: StringFilter<"Review"> | string
+    menuItemId?: StringFilter<"Review"> | string
+    rating?: IntFilter<"Review"> | number
+    comment?: StringNullableFilter<"Review"> | string | null
+    isApproved?: BoolFilter<"Review"> | boolean
+    createdAt?: DateTimeFilter<"Review"> | Date | string
+  }
+
   export type UserCreateWithoutSessionsInput = {
     id?: string
     name: string
@@ -19137,6 +21297,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountCreateNestedManyWithoutUserInput
     bookings?: BookingCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -19151,6 +21312,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
     bookings?: BookingUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -19181,6 +21343,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUpdateManyWithoutUserNestedInput
     bookings?: BookingUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -19195,6 +21358,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
     bookings?: BookingUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutAccountsInput = {
@@ -19209,6 +21373,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
     bookings?: BookingCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
@@ -19223,6 +21388,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     bookings?: BookingUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -19253,6 +21419,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
     bookings?: BookingUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -19267,6 +21434,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     bookings?: BookingUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type MenuItemCreateWithoutCategoryInput = {
@@ -19274,18 +21442,25 @@ export namespace Prisma {
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    images?: MenuImageCreateNestedManyWithoutMenuItemInput
+    media?: MenuMediaCreateNestedManyWithoutMenuItemInput
+    reviews?: ReviewCreateNestedManyWithoutMenuItemInput
   }
 
   export type MenuItemUncheckedCreateWithoutCategoryInput = {
@@ -19293,18 +21468,25 @@ export namespace Prisma {
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    images?: MenuImageUncheckedCreateNestedManyWithoutMenuItemInput
+    media?: MenuMediaUncheckedCreateNestedManyWithoutMenuItemInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutMenuItemInput
   }
 
   export type MenuItemCreateOrConnectWithoutCategoryInput = {
@@ -19342,14 +21524,20 @@ export namespace Prisma {
     name?: StringFilter<"MenuItem"> | string
     slug?: StringFilter<"MenuItem"> | string
     description?: StringFilter<"MenuItem"> | string
+    preparationTime?: StringNullableFilter<"MenuItem"> | string | null
+    cookingTime?: StringNullableFilter<"MenuItem"> | string | null
+    servingSize?: StringNullableFilter<"MenuItem"> | string | null
+    ingredients?: StringNullableListFilter<"MenuItem">
+    calories?: IntNullableFilter<"MenuItem"> | number | null
     flavorProfile?: StringNullableFilter<"MenuItem"> | string | null
     price?: DecimalNullableFilter<"MenuItem"> | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: StringNullableFilter<"MenuItem"> | string | null
+    thumbnailUrl?: StringNullableFilter<"MenuItem"> | string | null
     publicId?: StringNullableFilter<"MenuItem"> | string | null
     dietaryTags?: StringNullableListFilter<"MenuItem">
     isSignature?: BoolFilter<"MenuItem"> | boolean
     isAvailable?: BoolFilter<"MenuItem"> | boolean
     isFeatured?: BoolFilter<"MenuItem"> | boolean
+    averageRating?: FloatNullableFilter<"MenuItem"> | number | null
     order?: IntFilter<"MenuItem"> | number
     createdAt?: DateTimeFilter<"MenuItem"> | Date | string
     updatedAt?: DateTimeFilter<"MenuItem"> | Date | string
@@ -19360,6 +21548,7 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    imageUrl?: string | null
     order?: number
   }
 
@@ -19368,6 +21557,7 @@ export namespace Prisma {
     name: string
     slug: string
     description?: string | null
+    imageUrl?: string | null
     order?: number
   }
 
@@ -19376,25 +21566,55 @@ export namespace Prisma {
     create: XOR<MenuCategoryCreateWithoutItemsInput, MenuCategoryUncheckedCreateWithoutItemsInput>
   }
 
-  export type MenuImageCreateWithoutMenuItemInput = {
+  export type MenuMediaCreateWithoutMenuItemInput = {
     id?: string
     url: string
     publicId?: string | null
+    mediaType?: $Enums.MediaType
   }
 
-  export type MenuImageUncheckedCreateWithoutMenuItemInput = {
+  export type MenuMediaUncheckedCreateWithoutMenuItemInput = {
     id?: string
     url: string
     publicId?: string | null
+    mediaType?: $Enums.MediaType
   }
 
-  export type MenuImageCreateOrConnectWithoutMenuItemInput = {
-    where: MenuImageWhereUniqueInput
-    create: XOR<MenuImageCreateWithoutMenuItemInput, MenuImageUncheckedCreateWithoutMenuItemInput>
+  export type MenuMediaCreateOrConnectWithoutMenuItemInput = {
+    where: MenuMediaWhereUniqueInput
+    create: XOR<MenuMediaCreateWithoutMenuItemInput, MenuMediaUncheckedCreateWithoutMenuItemInput>
   }
 
-  export type MenuImageCreateManyMenuItemInputEnvelope = {
-    data: MenuImageCreateManyMenuItemInput | MenuImageCreateManyMenuItemInput[]
+  export type MenuMediaCreateManyMenuItemInputEnvelope = {
+    data: MenuMediaCreateManyMenuItemInput | MenuMediaCreateManyMenuItemInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ReviewCreateWithoutMenuItemInput = {
+    id?: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutMenuItemInput = {
+    id?: string
+    userId: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+  }
+
+  export type ReviewCreateOrConnectWithoutMenuItemInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutMenuItemInput, ReviewUncheckedCreateWithoutMenuItemInput>
+  }
+
+  export type ReviewCreateManyMenuItemInputEnvelope = {
+    data: ReviewCreateManyMenuItemInput | ReviewCreateManyMenuItemInput[]
     skipDuplicates?: boolean
   }
 
@@ -19414,6 +21634,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
   }
 
@@ -19422,125 +21643,171 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     order?: IntFieldUpdateOperationsInput | number
   }
 
-  export type MenuImageUpsertWithWhereUniqueWithoutMenuItemInput = {
-    where: MenuImageWhereUniqueInput
-    update: XOR<MenuImageUpdateWithoutMenuItemInput, MenuImageUncheckedUpdateWithoutMenuItemInput>
-    create: XOR<MenuImageCreateWithoutMenuItemInput, MenuImageUncheckedCreateWithoutMenuItemInput>
+  export type MenuMediaUpsertWithWhereUniqueWithoutMenuItemInput = {
+    where: MenuMediaWhereUniqueInput
+    update: XOR<MenuMediaUpdateWithoutMenuItemInput, MenuMediaUncheckedUpdateWithoutMenuItemInput>
+    create: XOR<MenuMediaCreateWithoutMenuItemInput, MenuMediaUncheckedCreateWithoutMenuItemInput>
   }
 
-  export type MenuImageUpdateWithWhereUniqueWithoutMenuItemInput = {
-    where: MenuImageWhereUniqueInput
-    data: XOR<MenuImageUpdateWithoutMenuItemInput, MenuImageUncheckedUpdateWithoutMenuItemInput>
+  export type MenuMediaUpdateWithWhereUniqueWithoutMenuItemInput = {
+    where: MenuMediaWhereUniqueInput
+    data: XOR<MenuMediaUpdateWithoutMenuItemInput, MenuMediaUncheckedUpdateWithoutMenuItemInput>
   }
 
-  export type MenuImageUpdateManyWithWhereWithoutMenuItemInput = {
-    where: MenuImageScalarWhereInput
-    data: XOR<MenuImageUpdateManyMutationInput, MenuImageUncheckedUpdateManyWithoutMenuItemInput>
+  export type MenuMediaUpdateManyWithWhereWithoutMenuItemInput = {
+    where: MenuMediaScalarWhereInput
+    data: XOR<MenuMediaUpdateManyMutationInput, MenuMediaUncheckedUpdateManyWithoutMenuItemInput>
   }
 
-  export type MenuImageScalarWhereInput = {
-    AND?: MenuImageScalarWhereInput | MenuImageScalarWhereInput[]
-    OR?: MenuImageScalarWhereInput[]
-    NOT?: MenuImageScalarWhereInput | MenuImageScalarWhereInput[]
-    id?: StringFilter<"MenuImage"> | string
-    url?: StringFilter<"MenuImage"> | string
-    publicId?: StringNullableFilter<"MenuImage"> | string | null
-    menuItemId?: StringFilter<"MenuImage"> | string
+  export type MenuMediaScalarWhereInput = {
+    AND?: MenuMediaScalarWhereInput | MenuMediaScalarWhereInput[]
+    OR?: MenuMediaScalarWhereInput[]
+    NOT?: MenuMediaScalarWhereInput | MenuMediaScalarWhereInput[]
+    id?: StringFilter<"MenuMedia"> | string
+    url?: StringFilter<"MenuMedia"> | string
+    publicId?: StringNullableFilter<"MenuMedia"> | string | null
+    mediaType?: EnumMediaTypeFilter<"MenuMedia"> | $Enums.MediaType
+    menuItemId?: StringFilter<"MenuMedia"> | string
   }
 
-  export type MenuItemCreateWithoutImagesInput = {
+  export type ReviewUpsertWithWhereUniqueWithoutMenuItemInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutMenuItemInput, ReviewUncheckedUpdateWithoutMenuItemInput>
+    create: XOR<ReviewCreateWithoutMenuItemInput, ReviewUncheckedCreateWithoutMenuItemInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutMenuItemInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutMenuItemInput, ReviewUncheckedUpdateWithoutMenuItemInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutMenuItemInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutMenuItemInput>
+  }
+
+  export type MenuItemCreateWithoutMediaInput = {
     id?: string
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     category: MenuCategoryCreateNestedOneWithoutItemsInput
+    reviews?: ReviewCreateNestedManyWithoutMenuItemInput
   }
 
-  export type MenuItemUncheckedCreateWithoutImagesInput = {
+  export type MenuItemUncheckedCreateWithoutMediaInput = {
     id?: string
     categoryId: string
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
+    reviews?: ReviewUncheckedCreateNestedManyWithoutMenuItemInput
   }
 
-  export type MenuItemCreateOrConnectWithoutImagesInput = {
+  export type MenuItemCreateOrConnectWithoutMediaInput = {
     where: MenuItemWhereUniqueInput
-    create: XOR<MenuItemCreateWithoutImagesInput, MenuItemUncheckedCreateWithoutImagesInput>
+    create: XOR<MenuItemCreateWithoutMediaInput, MenuItemUncheckedCreateWithoutMediaInput>
   }
 
-  export type MenuItemUpsertWithoutImagesInput = {
-    update: XOR<MenuItemUpdateWithoutImagesInput, MenuItemUncheckedUpdateWithoutImagesInput>
-    create: XOR<MenuItemCreateWithoutImagesInput, MenuItemUncheckedCreateWithoutImagesInput>
+  export type MenuItemUpsertWithoutMediaInput = {
+    update: XOR<MenuItemUpdateWithoutMediaInput, MenuItemUncheckedUpdateWithoutMediaInput>
+    create: XOR<MenuItemCreateWithoutMediaInput, MenuItemUncheckedCreateWithoutMediaInput>
     where?: MenuItemWhereInput
   }
 
-  export type MenuItemUpdateToOneWithWhereWithoutImagesInput = {
+  export type MenuItemUpdateToOneWithWhereWithoutMediaInput = {
     where?: MenuItemWhereInput
-    data: XOR<MenuItemUpdateWithoutImagesInput, MenuItemUncheckedUpdateWithoutImagesInput>
+    data: XOR<MenuItemUpdateWithoutMediaInput, MenuItemUncheckedUpdateWithoutMediaInput>
   }
 
-  export type MenuItemUpdateWithoutImagesInput = {
+  export type MenuItemUpdateWithoutMediaInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: MenuCategoryUpdateOneRequiredWithoutItemsNestedInput
+    reviews?: ReviewUpdateManyWithoutMenuItemNestedInput
   }
 
-  export type MenuItemUncheckedUpdateWithoutImagesInput = {
+  export type MenuItemUncheckedUpdateWithoutMediaInput = {
     id?: StringFieldUpdateOperationsInput | string
     categoryId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    reviews?: ReviewUncheckedUpdateManyWithoutMenuItemNestedInput
   }
 
   export type PackageCreateWithoutServiceInput = {
@@ -19730,6 +21997,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionCreateNestedManyWithoutUserInput
     accounts?: AccountCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutBookingsInput = {
@@ -19744,6 +22012,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutBookingsInput = {
@@ -19801,6 +22070,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUpdateManyWithoutUserNestedInput
     accounts?: AccountUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutBookingsInput = {
@@ -19815,6 +22085,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ServiceUpsertWithoutBookingsInput = {
@@ -19850,6 +22121,202 @@ export namespace Prisma {
     packages?: PackageUncheckedUpdateManyWithoutServiceNestedInput
   }
 
+  export type UserCreateWithoutReviewsInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.Role
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionCreateNestedManyWithoutUserInput
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    bookings?: BookingCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    name: string
+    email: string
+    emailVerified?: boolean
+    image?: string | null
+    role?: $Enums.Role
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    bookings?: BookingUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutReviewsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type MenuItemCreateWithoutReviewsInput = {
+    id?: string
+    name: string
+    slug: string
+    description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
+    flavorProfile?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    thumbnailUrl?: string | null
+    publicId?: string | null
+    dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
+    isSignature?: boolean
+    isAvailable?: boolean
+    isFeatured?: boolean
+    averageRating?: number | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    category: MenuCategoryCreateNestedOneWithoutItemsInput
+    media?: MenuMediaCreateNestedManyWithoutMenuItemInput
+  }
+
+  export type MenuItemUncheckedCreateWithoutReviewsInput = {
+    id?: string
+    categoryId: string
+    name: string
+    slug: string
+    description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
+    flavorProfile?: string | null
+    price?: Decimal | DecimalJsLike | number | string | null
+    thumbnailUrl?: string | null
+    publicId?: string | null
+    dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
+    isSignature?: boolean
+    isAvailable?: boolean
+    isFeatured?: boolean
+    averageRating?: number | null
+    order?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    media?: MenuMediaUncheckedCreateNestedManyWithoutMenuItemInput
+  }
+
+  export type MenuItemCreateOrConnectWithoutReviewsInput = {
+    where: MenuItemWhereUniqueInput
+    create: XOR<MenuItemCreateWithoutReviewsInput, MenuItemUncheckedCreateWithoutReviewsInput>
+  }
+
+  export type UserUpsertWithoutReviewsInput = {
+    update: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+    create: XOR<UserCreateWithoutReviewsInput, UserUncheckedCreateWithoutReviewsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutReviewsInput, UserUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type UserUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    bookings?: BookingUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    emailVerified?: BoolFieldUpdateOperationsInput | boolean
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumRoleFieldUpdateOperationsInput | $Enums.Role
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    bookings?: BookingUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type MenuItemUpsertWithoutReviewsInput = {
+    update: XOR<MenuItemUpdateWithoutReviewsInput, MenuItemUncheckedUpdateWithoutReviewsInput>
+    create: XOR<MenuItemCreateWithoutReviewsInput, MenuItemUncheckedCreateWithoutReviewsInput>
+    where?: MenuItemWhereInput
+  }
+
+  export type MenuItemUpdateToOneWithWhereWithoutReviewsInput = {
+    where?: MenuItemWhereInput
+    data: XOR<MenuItemUpdateWithoutReviewsInput, MenuItemUncheckedUpdateWithoutReviewsInput>
+  }
+
+  export type MenuItemUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
+    flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
+    isSignature?: BoolFieldUpdateOperationsInput | boolean
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: MenuCategoryUpdateOneRequiredWithoutItemsNestedInput
+    media?: MenuMediaUpdateManyWithoutMenuItemNestedInput
+  }
+
+  export type MenuItemUncheckedUpdateWithoutReviewsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
+    flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
+    isSignature?: BoolFieldUpdateOperationsInput | boolean
+    isAvailable?: BoolFieldUpdateOperationsInput | boolean
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
+    order?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: MenuMediaUncheckedUpdateManyWithoutMenuItemNestedInput
+  }
+
   export type SessionCreateManyUserInput = {
     id?: string
     token: string
@@ -19877,6 +22344,15 @@ export namespace Prisma {
     status?: $Enums.BookingStatus
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ReviewCreateManyUserInput = {
+    id?: string
+    menuItemId: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
   }
 
   export type SessionUpdateWithoutUserInput = {
@@ -19966,19 +22442,52 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ReviewUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    menuItem?: MenuItemUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menuItemId?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    menuItemId?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MenuItemCreateManyCategoryInput = {
     id?: string
     name: string
     slug: string
     description: string
+    preparationTime?: string | null
+    cookingTime?: string | null
+    servingSize?: string | null
+    ingredients?: MenuItemCreateingredientsInput | string[]
+    calories?: number | null
     flavorProfile?: string | null
     price?: Decimal | DecimalJsLike | number | string | null
-    imageUrl?: string | null
+    thumbnailUrl?: string | null
     publicId?: string | null
     dietaryTags?: MenuItemCreatedietaryTagsInput | string[]
     isSignature?: boolean
     isAvailable?: boolean
     isFeatured?: boolean
+    averageRating?: number | null
     order?: number
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -19989,18 +22498,25 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: MenuImageUpdateManyWithoutMenuItemNestedInput
+    media?: MenuMediaUpdateManyWithoutMenuItemNestedInput
+    reviews?: ReviewUpdateManyWithoutMenuItemNestedInput
   }
 
   export type MenuItemUncheckedUpdateWithoutCategoryInput = {
@@ -20008,18 +22524,25 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    images?: MenuImageUncheckedUpdateManyWithoutMenuItemNestedInput
+    media?: MenuMediaUncheckedUpdateManyWithoutMenuItemNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutMenuItemNestedInput
   }
 
   export type MenuItemUncheckedUpdateManyWithoutCategoryInput = {
@@ -20027,41 +22550,87 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
+    preparationTime?: NullableStringFieldUpdateOperationsInput | string | null
+    cookingTime?: NullableStringFieldUpdateOperationsInput | string | null
+    servingSize?: NullableStringFieldUpdateOperationsInput | string | null
+    ingredients?: MenuItemUpdateingredientsInput | string[]
+    calories?: NullableIntFieldUpdateOperationsInput | number | null
     flavorProfile?: NullableStringFieldUpdateOperationsInput | string | null
     price?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
-    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    thumbnailUrl?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     dietaryTags?: MenuItemUpdatedietaryTagsInput | string[]
     isSignature?: BoolFieldUpdateOperationsInput | boolean
     isAvailable?: BoolFieldUpdateOperationsInput | boolean
     isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    averageRating?: NullableFloatFieldUpdateOperationsInput | number | null
     order?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MenuImageCreateManyMenuItemInput = {
+  export type MenuMediaCreateManyMenuItemInput = {
     id?: string
     url: string
     publicId?: string | null
+    mediaType?: $Enums.MediaType
   }
 
-  export type MenuImageUpdateWithoutMenuItemInput = {
+  export type ReviewCreateManyMenuItemInput = {
+    id?: string
+    userId: string
+    rating?: number
+    comment?: string | null
+    isApproved?: boolean
+    createdAt?: Date | string
+  }
+
+  export type MenuMediaUpdateWithoutMenuItemInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   }
 
-  export type MenuImageUncheckedUpdateWithoutMenuItemInput = {
+  export type MenuMediaUncheckedUpdateWithoutMenuItemInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
   }
 
-  export type MenuImageUncheckedUpdateManyWithoutMenuItemInput = {
+  export type MenuMediaUncheckedUpdateManyWithoutMenuItemInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    mediaType?: EnumMediaTypeFieldUpdateOperationsInput | $Enums.MediaType
+  }
+
+  export type ReviewUpdateWithoutMenuItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutMenuItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutMenuItemInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    isApproved?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PackageCreateManyServiceInput = {

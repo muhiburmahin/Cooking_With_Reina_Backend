@@ -152,6 +152,7 @@ exports.Prisma.MenuCategoryScalarFieldEnum = {
   name: 'name',
   slug: 'slug',
   description: 'description',
+  imageUrl: 'imageUrl',
   order: 'order'
 };
 
@@ -161,23 +162,30 @@ exports.Prisma.MenuItemScalarFieldEnum = {
   name: 'name',
   slug: 'slug',
   description: 'description',
+  preparationTime: 'preparationTime',
+  cookingTime: 'cookingTime',
+  servingSize: 'servingSize',
+  ingredients: 'ingredients',
+  calories: 'calories',
   flavorProfile: 'flavorProfile',
   price: 'price',
-  imageUrl: 'imageUrl',
+  thumbnailUrl: 'thumbnailUrl',
   publicId: 'publicId',
   dietaryTags: 'dietaryTags',
   isSignature: 'isSignature',
   isAvailable: 'isAvailable',
   isFeatured: 'isFeatured',
+  averageRating: 'averageRating',
   order: 'order',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.MenuImageScalarFieldEnum = {
+exports.Prisma.MenuMediaScalarFieldEnum = {
   id: 'id',
   url: 'url',
   publicId: 'publicId',
+  mediaType: 'mediaType',
   menuItemId: 'menuItemId'
 };
 
@@ -218,6 +226,16 @@ exports.Prisma.BookingScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ReviewScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  menuItemId: 'menuItemId',
+  rating: 'rating',
+  comment: 'comment',
+  isApproved: 'isApproved',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.EventScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -240,7 +258,9 @@ exports.Prisma.TestimonialScalarFieldEnum = {
 
 exports.Prisma.GalleryScalarFieldEnum = {
   id: 'id',
-  imageUrl: 'imageUrl',
+  url: 'url',
+  publicId: 'publicId',
+  mediaType: 'mediaType',
   category: 'category',
   order: 'order'
 };
@@ -262,6 +282,11 @@ exports.Prisma.NullsOrder = {
 exports.Role = exports.$Enums.Role = {
   ADMIN: 'ADMIN',
   CLIENT: 'CLIENT'
+};
+
+exports.MediaType = exports.$Enums.MediaType = {
+  IMAGE: 'IMAGE',
+  VIDEO: 'VIDEO'
 };
 
 exports.BudgetRange = exports.$Enums.BudgetRange = {
@@ -290,10 +315,11 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   MenuCategory: 'MenuCategory',
   MenuItem: 'MenuItem',
-  MenuImage: 'MenuImage',
+  MenuMedia: 'MenuMedia',
   Service: 'Service',
   Package: 'Package',
   Booking: 'Booking',
+  Review: 'Review',
   Event: 'Event',
   Testimonial: 'Testimonial',
   Gallery: 'Gallery'
