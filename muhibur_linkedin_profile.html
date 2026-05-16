@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinkedIn Profile — Md Muhibur Rahman Mahin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f3f2ef;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    .container { max-width: 860px; margin: 30px auto; padding: 0 16px 60px; }
+
+    /* Section Card */
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    /* Cover + Profile Header */
+    .cover {
+      background: linear-gradient(135deg, #0a0e27 0%, #0a66c2 50%, #7c3aed 80%, #f97316 100%);
+      height: 160px;
+      position: relative;
+    }
+    .profile-header {
+      padding: 0 24px 20px;
+      position: relative;
+    }
+    .avatar-wrap {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      background: linear-gradient(135deg, #0a66c2, #7c3aed);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.8rem; color: #fff; font-weight: 700;
+      margin-top: -55px;
+      margin-bottom: 8px;
+    }
+    .name { font-size: 1.5rem; font-weight: 700; color: #1a1a1a; }
+    .title-tag { font-size: 1rem; color: #0a66c2; font-weight: 600; margin: 2px 0 6px; }
+    .location { font-size: 0.88rem; color: #666; }
+    .custom-url {
+      display: inline-block;
+      background: #0a66c2;
+      color: #fff;
+      padding: 5px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      text-decoration: none;
+      margin-top: 8px;
+    }
+
+    /* Section title */
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0a66c2;
+      padding: 18px 24px 10px;
+      border-bottom: 2px solid #e8f0fe;
+    }
+    .section-body { padding: 14px 24px 20px; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 20px;
+    }
+    .contact-item { font-size: 0.9rem; color: #333; }
+    .contact-item span { color: #0a66c2; font-weight: 600; }
+
+    /* Featured */
+    .featured-grid {
+      display: flex; gap: 14px; flex-wrap: wrap;
+    }
+    .featured-card {
+      border: 1px solid #dde3ea;
+      border-radius: 8px;
+      padding: 12px 16px;
+      flex: 1; min-width: 200px;
+      background: #f9fbff;
+    }
+    .featured-card .fc-title { font-weight: 700; color: #0a66c2; font-size: 0.95rem; }
+    .featured-card .fc-sub { font-size: 0.82rem; color: #666; margin-top: 2px; }
+    .featured-card a { font-size: 0.82rem; color: #0a66c2; word-break: break-all; }
+
+    /* About */
+    .about-text { font-size: 0.93rem; color: #333; white-space: pre-line; }
+
+    /* Experience / Education */
+    .entry { display: flex; gap: 14px; margin-bottom: 18px; }
+    .entry-icon {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: linear-gradient(135deg, #0a66c2, #7c3aed);
+      flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; color: #fff;
+    }
+    .entry-body { flex: 1; }
+    .entry-company { font-weight: 700; color: #1a1a1a; font-size: 0.97rem; }
+    .entry-role { color: #0a66c2; font-size: 0.9rem; font-weight: 600; }
+    .entry-date { font-size: 0.82rem; color: #888; margin: 2px 0 4px; }
+    .entry-desc { font-size: 0.88rem; color: #444; }
+
+    /* Projects */
+    .project-card {
+      border: 1px solid #dde3ea;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+    .project-img {
+      background: linear-gradient(135deg, #0a0e27, #0a66c2 60%, #7c3aed);
+      height: 90px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+    }
+    .project-body { padding: 12px 16px; }
+    .project-name { font-weight: 700; color: #0a66c2; font-size: 1rem; }
+    .project-desc { font-size: 0.88rem; color: #444; margin: 4px 0 8px; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+    .tech-badge {
+      background: #e8f0fe;
+      color: #0a66c2;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .project-link { font-size: 0.82rem; color: #0a66c2; }
+
+    /* Skills */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-pill {
+      background: #e8f0fe;
+      color: #0a66c2;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.83rem;
+      font-weight: 600;
+    }
+    .skill-pill.soft { background: #f0fdf4; color: #16a34a; }
+    .skill-section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 10px 0 6px;
+    }
+
+    /* Certifications / Courses */
+    .cert-item { margin-bottom: 12px; }
+    .cert-name { font-weight: 700; color: #1a1a1a; font-size: 0.93rem; }
+    .cert-issuer { font-size: 0.85rem; color: #0a66c2; }
+    .cert-date { font-size: 0.8rem; color: #888; }
+
+    /* Languages */
+    .lang-item { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 0.9rem; }
+    .lang-level { color: #888; font-size: 0.82rem; }
+
+    /* Footer */
+    .footer { text-align: center; color: #aaa; font-size: 0.82rem; margin-top: 30px; }
+
+    @media (max-width: 600px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== PROFILE HEADER ===== -->
+  <div class="card">
+    <div class="cover"></div>
+    <div class="profile-header">
+      <div class="avatar-wrap">M</div>
+      <div class="name">Md Muhibur Rahman Mahin</div>
+      <div class="title-tag">Full Stack Developer | Next.js · TypeScript · Node.js · Prisma · PostgreSQL · Tailwind CSS</div>
+      <div class="location">📍 Dhaka, Bangladesh &nbsp;·&nbsp; Open to Work (Remote & Onsite)</div>
+      <a class="custom-url" href="https://www.linkedin.com/in/muhuburmahin">🔗 linkedin.com/in/muhuburmahin</a>
+    </div>
+  </div>
+
+  <!-- ===== CONTACT INFO ===== -->
+  <div class="card">
+    <div class="section-title">📬 Contact Info</div>
+    <div class="section-body">
+      <div class="contact-grid">
+        <div class="contact-item"><span>LinkedIn:</span> linkedin.com/in/muhuburmahin</div>
+        <div class="contact-item"><span>GitHub:</span> github.com/muhuburmahin</div>
+        <div class="contact-item"><span>Email:</span> muhuburmahin@gmail.com</div>
+        <div class="contact-item"><span>Phone:</span> +880 1XXXXXXXXX</div>
+        <div class="contact-item"><span>Address:</span> Dhaka, Bangladesh</div>
+        <div class="contact-item"><span>Website/Portfolio:</span> github.com/muhuburmahin</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FEATURED ===== -->
+  <div class="card">
+    <div class="section-title">⭐ Featured</div>
+    <div class="section-body">
+      <div class="featured-grid">
+        <div class="featured-card">
+          <div class="fc-title">📄 Resume / CV</div>
+          <div class="fc-sub">Md Muhibur Rahman Mahin — Full Stack Developer</div>
+          <a href="#">View Resume (Google Drive Link)</a>
+        </div>
+        <div class="featured-card">
+          <div class="fc-title">💻 GitHub Profile</div>
+          <div class="fc-sub">All projects, open-source contributions & code samples</div>
+          <a href="https://github.com/muhuburmahin">github.com/muhuburmahin</a>
+        </div>
+        <div class="featured-card">
+          <div class="fc-title">🍳 Cooking With Reina</div>
+          <div class="fc-sub">Full Stack Web App — Best Project</div>
+          <a href="#">Live Link / GitHub Repo</a>
+        </div>
+        <div class="featured-card">
+          <div class="fc-title">🏆 Programming for the Next Web (L1)</div>
+          <div class="fc-sub">Certificate — Programming Hero</div>
+          <a href="#">View Certificate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT ===== -->
+  <div class="card">
+    <div class="section-title">🧑‍💻 About</div>
+    <div class="section-body">
+      <div class="about-text">
+Hi! I'm Muhibur — a passionate Full Stack Developer from Dhaka, Bangladesh, focused on building modern, scalable, and production-ready web applications with clean code and best practices.
+
+I specialize in the JavaScript ecosystem — crafting fast, responsive front-ends with Next.js, TypeScript, and Tailwind CSS, and building reliable, secure back-ends with Node.js, Prisma ORM, and PostgreSQL.
+
+My core values as a developer:
+✅ Clean, readable, and maintainable code
+✅ Scalable architecture from day one
+✅ Best practices in security and performance
+✅ Problem-solving with a product mindset
+
+I enjoy the full lifecycle of building software — from turning a rough idea into a clean database schema, to deploying a polished, performant front-end that real users love.
+
+Currently, I am deepening my expertise in serverless architectures, AI-integrated web applications, and cloud deployments on platforms like Vercel and AWS.
+
+I am actively looking for opportunities where I can contribute meaningfully, grow fast, and be part of a team that values quality and innovation.
+
+📫 Reach me: muhuburmahin@gmail.com
+🔗 GitHub: github.com/muhuburmahin
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <div class="card">
+    <div class="section-title">💼 Experience</div>
+    <div class="section-body">
+      <div class="entry">
+        <div class="entry-icon">💻</div>
+        <div class="entry-body">
+          <div class="entry-company">Freelance Full Stack Developer</div>
+          <div class="entry-role">Full Stack Web Developer (Next.js / Node.js)</div>
+          <div class="entry-date">Jan 2024 – Present · Remote</div>
+          <div class="entry-desc">
+            Designed and developed full-stack web applications for clients using Next.js, TypeScript, Node.js, Prisma, and PostgreSQL. Responsibilities included requirements gathering, UI/UX implementation with Tailwind CSS, RESTful API development, database schema design, deployment on Vercel and cloud platforms, and post-launch maintenance.
+          </div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-icon">🎓</div>
+        <div class="entry-body">
+          <div class="entry-company">Programming Hero</div>
+          <div class="entry-role">Student — Full Stack Web Development Track</div>
+          <div class="entry-date">2023 – 2024 · Online</div>
+          <div class="entry-desc">
+            Completed intensive full-stack web development training. Built multiple real-world projects covering React, Next.js, Node.js, Express, MongoDB, PostgreSQL, Prisma, and Tailwind CSS. Practiced Agile workflows, code reviews, and team collaboration.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EDUCATION ===== -->
+  <div class="card">
+    <div class="section-title">🎓 Education</div>
+    <div class="section-body">
+      <div class="entry">
+        <div class="entry-icon">🏛️</div>
+        <div class="entry-body">
+          <div class="entry-company">[Your University / College Name]</div>
+          <div class="entry-role">Bachelor of Science — Computer Science / Engineering (or relevant field)</div>
+          <div class="entry-date">20XX – 20XX</div>
+          <div class="entry-desc">Relevant coursework: Data Structures, Algorithms, Database Management, Operating Systems, Computer Networks, Software Engineering.</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-icon">🏫</div>
+        <div class="entry-body">
+          <div class="entry-company">[Your College/School Name]</div>
+          <div class="entry-role">Higher Secondary Certificate (HSC) — Science</div>
+          <div class="entry-date">20XX – 20XX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LICENSES & CERTIFICATIONS ===== -->
+  <div class="card">
+    <div class="section-title">🏆 Licenses &amp; Certifications</div>
+    <div class="section-body">
+      <div class="cert-item">
+        <div class="cert-name">Programming for the Next Web (L1) — Full Stack Development</div>
+        <div class="cert-issuer">Issued by: Programming Hero</div>
+        <div class="cert-date">2024 · Credential ID: [Add ID]</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Next.js &amp; React — The Complete Guide</div>
+        <div class="cert-issuer">Issued by: Udemy / [Platform Name]</div>
+        <div class="cert-date">2023</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">TypeScript Masterclass</div>
+        <div class="cert-issuer">Issued by: [Platform Name]</div>
+        <div class="cert-date">2023</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">PostgreSQL &amp; Prisma ORM for Node.js Developers</div>
+        <div class="cert-issuer">Issued by: [Platform Name]</div>
+        <div class="cert-date">2024</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PROJECTS ===== -->
+  <div class="card">
+    <div class="section-title">🚀 Projects</div>
+    <div class="section-body">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-img">🍳 Cooking With Reina</div>
+        <div class="project-body">
+          <div class="project-name">Cooking With Reina — Recipe Sharing Platform</div>
+          <div class="project-desc">
+            A full-stack recipe sharing and food community platform. Users can create accounts, post recipes with photos, browse categorized meals, save favorites, and comment on posts. Includes admin dashboard for content management.
+            <br/><br/>
+            <strong>Key Features:</strong> User authentication (JWT), recipe CRUD, image upload, search &amp; filter, responsive design, admin panel.
+          </div>
+          <div class="project-stack">
+            <span class="tech-badge">Next.js</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Prisma</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Tailwind CSS</span>
+          </div>
+          <div class="project-link">🔗 Live: <a href="#">[Live Link]</a> &nbsp;|&nbsp; 💻 GitHub: <a href="https://github.com/muhuburmahin">github.com/muhuburmahin</a></div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-img">🛒 E-Commerce Platform</div>
+        <div class="project-body">
+          <div class="project-name">ShopNext — Full Stack E-Commerce Application</div>
+          <div class="project-desc">
+            A complete e-commerce web application with product listings, shopping cart, order management, and payment integration. Features include role-based access for admin and customers, order tracking, and a responsive storefront.
+            <br/><br/>
+            <strong>Key Features:</strong> Product catalog, cart &amp; checkout, Stripe payment, order history, admin dashboard, inventory management.
+          </div>
+          <div class="project-stack">
+            <span class="tech-badge">Next.js</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Prisma</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Tailwind CSS</span>
+            <span class="tech-badge">Stripe API</span>
+          </div>
+          <div class="project-link">🔗 Live: <a href="#">[Live Link]</a> &nbsp;|&nbsp; 💻 GitHub: <a href="https://github.com/muhuburmahin">github.com/muhuburmahin</a></div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-img">📋 Task Manager</div>
+        <div class="project-body">
+          <div class="project-name">TaskFlow — Project &amp; Task Management App</div>
+          <div class="project-desc">
+            A collaborative project management tool inspired by Trello. Teams can create boards, add tasks with priorities and deadlines, assign members, and track progress visually with a drag-and-drop Kanban interface.
+            <br/><br/>
+            <strong>Key Features:</strong> Kanban board, drag-and-drop, team collaboration, real-time updates, deadline tracking, email notifications.
+          </div>
+          <div class="project-stack">
+            <span class="tech-badge">Next.js</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Prisma</span>
+            <span class="tech-badge">PostgreSQL</span>
+            <span class="tech-badge">Tailwind CSS</span>
+            <span class="tech-badge">Socket.io</span>
+          </div>
+          <div class="project-link">🔗 Live: <a href="#">[Live Link]</a> &nbsp;|&nbsp; 💻 GitHub: <a href="https://github.com/muhuburmahin">github.com/muhuburmahin</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== SKILLS ===== -->
+  <div class="card">
+    <div class="section-title">🛠️ Skills</div>
+    <div class="section-body">
+      <div class="skill-section-label">L1 — Core Technical Skills</div>
+      <div class="skills-grid">
+        <span class="skill-pill">Next.js</span>
+        <span class="skill-pill">TypeScript</span>
+        <span class="skill-pill">Node.js</span>
+        <span class="skill-pill">Prisma ORM</span>
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">Tailwind CSS</span>
+        <span class="skill-pill">React.js</span>
+        <span class="skill-pill">REST API Design</span>
+      </div>
+      <div class="skill-section-label" style="margin-top:14px;">L2 — Supporting Technical Skills</div>
+      <div class="skills-grid">
+        <span class="skill-pill">JavaScript (ES6+)</span>
+        <span class="skill-pill">Express.js</span>
+        <span class="skill-pill">Git &amp; GitHub</span>
+        <span class="skill-pill">Docker (Basics)</span>
+        <span class="skill-pill">Vercel Deployment</span>
+        <span class="skill-pill">JWT Authentication</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">MongoDB</span>
+      </div>
+      <div class="skill-section-label" style="margin-top:14px;">Soft Skills</div>
+      <div class="skills-grid">
+        <span class="skill-pill soft">Problem Solving</span>
+        <span class="skill-pill soft">Team Collaboration</span>
+        <span class="skill-pill soft">Clear Communication</span>
+        <span class="skill-pill soft">Ownership Mindset</span>
+        <span class="skill-pill soft">Fast Learning</span>
+        <span class="skill-pill soft">Time Management</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== COURSES ===== -->
+  <div class="card">
+    <div class="section-title">📚 Courses</div>
+    <div class="section-body">
+      <div class="cert-item">
+        <div class="cert-name">Programming for the Next Web (L1) — Full Stack Web Development</div>
+        <div class="cert-issuer">Programming Hero · 2023–2024</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">Complete Next.js Developer Course</div>
+        <div class="cert-issuer">Udemy / [Platform] · 2023</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">TypeScript for Professionals</div>
+        <div class="cert-issuer">[Platform] · 2023</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-name">PostgreSQL &amp; Database Design Fundamentals</div>
+        <div class="cert-issuer">[Platform] · 2024</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LANGUAGES ===== -->
+  <div class="card">
+    <div class="section-title">🌐 Languages</div>
+    <div class="section-body">
+      <div class="lang-item">
+        <span>Bengali (Bangla)</span>
+        <span class="lang-level">Native / Bilingual Proficiency</span>
+      </div>
+      <div class="lang-item">
+        <span>English</span>
+        <span class="lang-level">Professional Working Proficiency</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== HONORS & AWARDS ===== -->
+  <div class="card">
+    <div class="section-title">🥇 Honors &amp; Awards</div>
+    <div class="section-body">
+      <div class="cert-item">
+        <div class="cert-name">Programming Hero L1 — Course Completion Recognition</div>
+        <div class="cert-issuer">Programming Hero · 2024</div>
+        <div class="cert-date">Recognized for completing the full Full Stack Web Development track with practical project submissions.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== VOLUNTEER EXPERIENCE ===== -->
+  <div class="card">
+    <div class="section-title">🤝 Volunteer Experience</div>
+    <div class="section-body">
+      <div class="entry">
+        <div class="entry-icon">🤝</div>
+        <div class="entry-body">
+          <div class="entry-company">Programming Community / Study Group</div>
+          <div class="entry-role">Peer Mentor — Web Development</div>
+          <div class="entry-date">2023 – Present</div>
+          <div class="entry-desc">Helped fellow learners debug code, understand concepts like Next.js routing, Prisma schema design, and PostgreSQL queries. Actively participated in community discussions and guided beginners through their first full-stack projects.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CUSTOM URL NOTE ===== -->
+  <div class="card" style="border-left: 4px solid #0a66c2;">
+    <div class="section-title">🔗 LinkedIn Custom URL (How to Set)</div>
+    <div class="section-body" style="font-size:0.9rem; color:#333;">
+      <strong>Recommended Custom URL:</strong>
+      <code style="background:#e8f0fe; padding:3px 10px; border-radius:6px; color:#0a66c2; font-size:0.95rem;">
+        linkedin.com/in/muhuburmahin
+      </code>
+      <br/><br/>
+      <strong>Steps to customize:</strong>
+      <ol style="margin-left:18px; margin-top:6px;">
+        <li>Go to your LinkedIn Profile</li>
+        <li>Click <strong>"Edit public profile &amp; URL"</strong> (top right)</li>
+        <li>Under <em>"Edit your custom URL"</em>, enter: <strong>muhuburmahin</strong></li>
+        <li>Click Save</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ===== SUBMISSION CHECKLIST ===== -->
+  <div class="card" style="border-left: 4px solid #16a34a;">
+    <div class="section-title" style="color:#16a34a;">✅ Submission Checklist</div>
+    <div class="section-body" style="font-size:0.9rem;">
+      <ul style="margin-left:18px;">
+        <li>☑ Cover Photo uploaded (LinkedIn Banner)</li>
+        <li>☑ Profile Photo uploaded (professional headshot)</li>
+        <li>☑ Title set: <em>Full Stack Developer | Next.js · TypeScript · Node.js · Prisma · PostgreSQL</em></li>
+        <li>☑ Contact info added (email, phone, address)</li>
+        <li>☑ Featured: Resume + GitHub + Best Project + Certificate (4 items)</li>
+        <li>☑ About section written (no ChatGPT copy-paste — original voice)</li>
+        <li>☑ Experience added</li>
+        <li>☑ Education added</li>
+        <li>☑ Licenses &amp; Certifications added (4 certs)</li>
+        <li>☑ Projects: 3 projects with screenshots, tech stack skills, live links</li>
+        <li>☑ Skills: 22 skills added (L1 + L2 + Soft Skills)</li>
+        <li>☑ Courses added</li>
+        <li>☑ Languages added</li>
+        <li>☑ Honors &amp; Awards added</li>
+        <li>☑ Volunteer Experience added</li>
+        <li>☑ Custom LinkedIn URL set: linkedin.com/in/muhuburmahin</li>
+      </ul>
+      <br/>
+      <strong>Submit:</strong>
+      <ul style="margin-left:18px; margin-top:4px;">
+        <li>🔗 GitHub: <a href="https://github.com/muhuburmahin" style="color:#0a66c2;">github.com/muhuburmahin</a></li>
+        <li>🔗 LinkedIn: <a href="https://www.linkedin.com/in/muhuburmahin" style="color:#0a66c2;">linkedin.com/in/muhuburmahin</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    Md Muhibur Rahman Mahin &nbsp;·&nbsp; Full Stack Developer &nbsp;·&nbsp;
+    github.com/muhuburmahin &nbsp;·&nbsp; linkedin.com/in/muhuburmahin
+  </div>
+
+</div>
+</body>
+</html>
