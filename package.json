@@ -38,6 +38,7 @@
     "@types/multer": "^1.4.13",
     "@types/node": "^20.19.39",
     "@types/nodemailer": "^6.4.23",
+    "docx": "^9.6.1",
     "nodemon": "^3.1.14",
     "prisma": "^7.8.0",
     "ts-node-dev": "^2.0.0",

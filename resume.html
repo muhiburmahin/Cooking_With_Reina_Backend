@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Muhib Mahin — Resume</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 10.5pt;
+      color: #000;
+      background: #fff;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      margin: 0 auto;
+      padding: 0.55in 0.62in 0.5in 0.62in;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 7px;
+    }
+
+    .header-left h1 {
+      font-size: 20pt;
+      font-weight: bold;
+      line-height: 1.15;
+    }
+
+    .header-left .title {
+      font-size: 10.5pt;
+      margin-top: 2px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 9.8pt;
+      line-height: 1.7;
+    }
+
+    .header-right a { color: #1155CC; text-decoration: none; }
+    .header-right a:hover { text-decoration: underline; }
+
+    /* ── SECTION ── */
+    .section { margin-top: 7px; }
+
+    .section-title {
+      font-size: 10.8pt;
+      font-weight: bold;
+      font-variant: small-caps;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      border-bottom: 1px solid #000;
+      padding-bottom: 1px;
+      margin-bottom: 5px;
+    }
+
+    /* ── SKILLS ── */
+    .skills { border-collapse: collapse; width: 100%; }
+    .skills td { vertical-align: top; padding: 1px 0; font-size: 10.2pt; }
+    .skills td.label { font-weight: bold; white-space: nowrap; padding-right: 5px; width: 1%; }
+
+    /* ── PROJECTS ── */
+    .project { margin-bottom: 7px; }
+
+    .proj-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .proj-title { font-weight: bold; font-size: 10.5pt; }
+    .proj-subtitle { font-weight: normal; font-style: italic; }
+
+    .proj-links { font-size: 9.6pt; white-space: nowrap; margin-left: 8px; }
+    .proj-links a { color: #1155CC; text-decoration: none; margin-left: 6px; }
+    .proj-links a:hover { text-decoration: underline; }
+
+    .proj-desc { font-size: 10.2pt; margin-bottom: 2px; }
+    .proj-tech { font-size: 10.2pt; margin-bottom: 3px; }
+
+    .project ul { margin-left: 18px; }
+    .project ul li { font-size: 10.2pt; margin-bottom: 1.5px; }
+
+    /* ── EDUCATION ── */
+    .edu-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 10.2pt;
+      margin-top: 2px;
+    }
+    .edu-row .edu-degree { font-weight: bold; }
+
+    .edu-sub { font-size: 10.2pt; margin-top: 1px; }
+
+    /* ── COURSES ── */
+    .courses { border-collapse: collapse; width: 100%; }
+    .courses td { vertical-align: top; padding: 1px 2px 2px 0; font-size: 10.2pt; }
+    .courses td.cert { text-align: right; white-space: nowrap; }
+    .courses a { color: #1155CC; text-decoration: none; }
+    .courses a:hover { text-decoration: underline; }
+
+    /* ── LANGUAGES ── */
+    .plain { font-size: 10.2pt; margin-top: 2px; }
+
+    @media print {
+      .page { width: 100%; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <h1>Md Muhib Ur Rahman Mahin</h1>
+      <div class="title">Full Stack Developer</div>
+    </div>
+    <div class="header-right">
+      ✉ <a href="mailto:muhibmahin@email.com">muhibmahin@email.com</a><br>
+      📞 +8801XXXXXXXXX (WhatsApp)<br>
+      📍 Sylhet, Bangladesh.<br>
+      <a href="#">LinkedIn</a>&nbsp;&nbsp;
+      <a href="#">GitHub</a>&nbsp;&nbsp;
+      <a href="#">Portfolio</a>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <table class="skills">
+      <tr><td class="label">Frontend:</td><td>HTML, CSS, JavaScript, TypeScript, React.js, Next.js, Redux, Tailwind CSS</td></tr>
+      <tr><td class="label">Backend:</td><td>Node.js, Express.js, Firebase, JSON Web Token (JWT), RESTful APIs</td></tr>
+      <tr><td class="label">Database &amp; ORM:</td><td>MongoDB, Mongoose, SQL, PostgreSQL, Prisma ORM</td></tr>
+      <tr><td class="label">Tools:</td><td>Git, GitHub, Cursor, VS Code, Vercel, Netlify, Postman</td></tr>
+      <tr><td class="label">Interpersonal Skills:</td><td>Analytical Problem-solving, Team Collaboration, Quick Learning, Time Management</td></tr>
+    </table>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="project">
+      <div class="proj-head">
+        <span class="proj-title">Planora <span class="proj-subtitle">(Full-Stack Event Management System)</span></span>
+        <span class="proj-links">
+          <a href="#">&#x1F517; Live Site</a>
+          <a href="#">&#x1F4BB; Client</a>
+          <a href="#">&#x2699;&#xFE0F; Server</a>
+        </span>
+      </div>
+      <div class="proj-desc">A complete full-stack event planning platform designed to feature dynamic dashboards and custom brand controls.</div>
+      <div class="proj-tech"><strong>Technologies Used:</strong> MongoDB, Express.js, React.js, Node.js, Tailwind CSS.</div>
+      <ul>
+        <li>Implemented secure multi-image upload functionality for fast and clean gallery management.</li>
+        <li>Designed a fully customized user interface featuring specific brand-colored backgrounds and theme-based custom selections.</li>
+        <li>Built real-time control features allowing event managers to create, delete, and view comprehensive dashboard analytics.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="proj-head">
+        <span class="proj-title">MediStore <span class="proj-subtitle">(Mobile-First Online Pharmacy Platform)</span></span>
+        <span class="proj-links">
+          <a href="#">&#x1F517; Live Site</a>
+          <a href="#">&#x1F4BB; Client</a>
+          <a href="#">&#x2699;&#xFE0F; Server</a>
+        </span>
+      </div>
+      <div class="proj-desc">A fast, phone-first web application designed for seamlessly searching, browsing, and ordering medicines safely.</div>
+      <div class="proj-tech"><strong>Technologies Used:</strong> Next.js, TypeScript, PostgreSQL, Prisma ORM, Tailwind CSS.</div>
+      <ul>
+        <li>Configured a secure Multi-Role system with distinct dashboard interfaces for Customers, Verified Sellers, and Admin panels.</li>
+        <li>Optimized medicine database search and filtering speeds using advanced index-based query structures.</li>
+        <li>Integrated strict transactional safety layers using database cascading deletes to protect purchase logs and historical integrity.</li>
+      </ul>
+    </div>
+
+    <div class="project">
+      <div class="proj-head">
+        <span class="proj-title">Vehicle Rental System <span class="proj-subtitle">(Backend Architecture Project)</span></span>
+        <span class="proj-links">
+          <a href="#">&#x1F517; Live Site</a>
+          <a href="#">&#x1F4BB; Source Code</a>
+        </span>
+      </div>
+      <div class="proj-desc">A robust and modular backend management system designed to track vehicle inventory, real-time availability, and bookings.</div>
+      <div class="proj-tech"><strong>Technologies Used:</strong> Node.js, TypeScript, PostgreSQL, Prisma ORM.</div>
+      <ul>
+        <li>Built complete CRUD endpoints with secure error parsing to manage extensive vehicle renting lifecycles.</li>
+        <li>Applied strict relational structures with TypeScript checking to ensure bug-free transaction handshakes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-row">
+      <span class="edu-degree">BSc. in Computer Science and Engineering (CSE)</span>
+      <span>Batch 60 &nbsp;|&nbsp; Ongoing</span>
+    </div>
+    <div class="edu-sub">Metropolitan University, Sylhet, Bangladesh.</div>
+  </div>
+
+  <!-- COURSES -->
+  <div class="section">
+    <div class="section-title">Courses</div>
+    <table class="courses">
+      <tr>
+        <td>Next Level Web Development</td>
+        <td>Programming Hero</td>
+        <td class="cert"><a href="#">Certificate</a></td>
+      </tr>
+      <tr>
+        <td>Complete Web Development Bootcamp</td>
+        <td>Programming Hero</td>
+        <td class="cert"><a href="#">Certificate</a></td>
+      </tr>
+      <tr>
+        <td>MU CP Booster Program (Competitive Programming &amp; Algorithms)</td>
+        <td>Metropolitan University</td>
+        <td class="cert"></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- LANGUAGES -->
+  <div class="section">
+    <div class="section-title">Languages</div>
+    <div class="plain">Fluent in Bengali (native), and proficient in English (professional working proficiency).</div>
+  </div>
+
+</div>
+</body>
+</html>
